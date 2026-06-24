@@ -51,8 +51,11 @@ def parse():
     p.add_argument("--alpha", type=float, default=None,
                    help="Dirichlet alpha cho Non-IID client partition; nhỏ hơn = Non-IID mạnh hơn")
     p.add_argument("--task_strategy", default=None,
-                   choices=["temporal", "category", "category_strict", "category_revisit"],
+                   choices=["temporal", "category", "category_dominant",
+                            "category_strict", "category_revisit"],
                    help="Cách tạo continual tasks")
+    p.add_argument("--dominant_ratio", type=float, default=None,
+                   help="Only for category_dominant; higher value = stronger task drift, e.g. 0.90")
     p.add_argument("--partition_strategy", default=None,
                    choices=["dirichlet", "category"],
                    help="Cách chia mỗi task cho clients")
@@ -97,6 +100,10 @@ def make_configs(args):
         dcfg["non_iid_alpha"] = args.alpha
     if args.task_strategy is not None:
         dcfg["task_strategy"] = args.task_strategy
+    if args.dominant_ratio is not None:
+        if not 0.0 < args.dominant_ratio < 1.0:
+            raise ValueError("--dominant_ratio must be in (0, 1)")
+        dcfg["dominant_ratio"] = args.dominant_ratio
     if args.partition_strategy is not None:
         dcfg["partition_strategy"] = args.partition_strategy
     if getattr(args, "seed", None) is not None:

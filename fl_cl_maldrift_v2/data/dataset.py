@@ -251,6 +251,118 @@ def category_temporal_split(X: np.ndarray, y: np.ndarray,
     return tasks
 
 
+def category_dominant_split(X: np.ndarray, y: np.ndarray,
+                            y_cls: np.ndarray,
+                            num_tasks: int, test_split: float,
+                            val_split: float, seed: int,
+                            dom_total: float = 0.75) -> List[Dict]:
+    """
+    Mixed dominant split.
+
+    Moi task deu co du cac malware families + benign, nhung co 1 family
+    chiem da so. dom_total dieu khien do lech phan phoi:
+      0.75 = drift vua
+      0.90 = drift manh, forgetting de quan sat hon
+    Voi CICMalDroid 5 tasks:
+      Task 0 dom: Adware
+      Task 1 dom: Banking
+      Task 2 dom: SMS
+      Task 3 dom: Riskware
+      Task 4 dom: family nhieu mau nhat lap lai (thuong la SMS)
+    """
+    rng = np.random.default_rng(seed)
+    cls_names = {1: "Adware", 2: "Banking", 3: "SMS", 4: "Riskware", 5: "Benign"}
+
+    mal_mask = (y == 1)
+    ben_mask = (y == 0)
+    mal_cls_vals = sorted(np.unique(y_cls[mal_mask]).tolist())
+    if not mal_cls_vals:
+        return temporal_split(X, y, num_tasks, test_split, val_split, seed)
+
+    idx_mal = {}
+    for cv in mal_cls_vals:
+        arr = np.where(mal_mask & (y_cls == cv))[0]
+        rng.shuffle(arr)
+        idx_mal[cv] = arr
+
+    cls_by_size = sorted(mal_cls_vals, key=lambda cv: len(idx_mal[cv]), reverse=True)
+    dominant = []
+    for t in range(num_tasks):
+        if t < len(mal_cls_vals):
+            dominant.append(mal_cls_vals[t])
+        else:
+            dominant.append(cls_by_size[(t - len(mal_cls_vals)) % len(cls_by_size)])
+
+    dom_total = float(np.clip(dom_total, 0.01, 0.99))
+    task_mal = defaultdict(list)
+
+    for cv, arr in idx_mal.items():
+        dom_tasks = [t for t, dom in enumerate(dominant) if dom == cv]
+        other_tasks = [t for t in range(num_tasks) if t not in dom_tasks]
+        weights = np.zeros(num_tasks, dtype=float)
+
+        if dom_tasks:
+            for t in dom_tasks:
+                weights[t] = dom_total / len(dom_tasks)
+            minor_total = 1.0 - dom_total
+        else:
+            minor_total = 1.0
+
+        if other_tasks:
+            for t in other_tasks:
+                weights[t] = minor_total / len(other_tasks)
+
+        weights = weights / weights.sum()
+        raw_counts = weights * len(arr)
+        counts = np.floor(raw_counts).astype(int)
+        remainder = len(arr) - counts.sum()
+        if remainder > 0:
+            for t in np.argsort(-(raw_counts - counts))[:remainder]:
+                counts[t] += 1
+
+        cur = 0
+        for t, cnt in enumerate(counts):
+            task_mal[t].extend(arr[cur:cur + int(cnt)].tolist())
+            cur += int(cnt)
+
+    ben_idx = np.where(ben_mask)[0]
+    rng.shuffle(ben_idx)
+    mal_counts = np.array([len(task_mal[t]) for t in range(num_tasks)], dtype=float)
+    if mal_counts.sum() > 0:
+        ben_counts = np.floor(mal_counts / mal_counts.sum() * len(ben_idx)).astype(int)
+        for t in np.argsort(-(mal_counts - ben_counts))[:len(ben_idx) - ben_counts.sum()]:
+            ben_counts[t] += 1
+    else:
+        ben_counts = np.array([len(x) for x in np.array_split(ben_idx, num_tasks)])
+
+    ben_chunks, cur = [], 0
+    for cnt in ben_counts:
+        ben_chunks.append(ben_idx[cur:cur + int(cnt)])
+        cur += int(cnt)
+    if cur < len(ben_idx):
+        ben_chunks[-1] = np.concatenate([ben_chunks[-1], ben_idx[cur:]])
+
+    tasks = []
+    for t in range(num_tasks):
+        idx_t = np.array(task_mal[t] + ben_chunks[t].tolist())
+        rng.shuffle(idx_t)
+
+        yt = y[idx_t]
+        cls_vals, cls_counts = np.unique(y_cls[idx_t], return_counts=True)
+        cls_dist = {
+            cls_names.get(int(cv), str(int(cv))): int(cnt)
+            for cv, cnt in zip(cls_vals, cls_counts)
+        }
+        dom_name = cls_names.get(int(dominant[t]), str(dominant[t]))
+        print(f"  Task {t} (dom={dom_name}, mixed): "
+              f"{len(idx_t)} samples | Mal={int((yt == 1).sum())} "
+              f"Ben={int((yt == 0).sum())} | ratio={dom_total:.2f} | {cls_dist}")
+
+        tasks.append(_task_split_dict(
+            X, y, y_cls, idx_t, test_split, val_split, seed, t))
+    return tasks
+
+
 def category_strict_split(X: np.ndarray, y: np.ndarray,
                           y_cls: np.ndarray,
                           num_tasks: int, test_split: float,
@@ -501,7 +613,9 @@ class DataManager:
 
         use_category_tasks = (
             y_cls is not None
-            and task_strategy in ("category", "category_strict", "category_revisit")
+            and task_strategy in (
+                "category", "category_dominant",
+                "category_strict", "category_revisit")
         )
 
         if use_category_tasks and task_strategy == "category":
@@ -512,6 +626,18 @@ class DataManager:
                 test_split = self.dcfg["test_split"],
                 val_split  = self.dcfg["val_split"],
                 seed       = self.dcfg["random_seed"],
+            )
+        elif use_category_tasks and task_strategy == "category_dominant":
+            dom_total = self.dcfg.get("dominant_ratio", 0.75)
+            print("[Data] Task split: category mixed-dominant Domain-IL "
+                  f"(dominant_ratio={float(dom_total):.2f})")
+            task_splits = category_dominant_split(
+                X, y, y_cls,
+                num_tasks  = self.dcfg["num_tasks"],
+                test_split = self.dcfg["test_split"],
+                val_split  = self.dcfg["val_split"],
+                seed       = self.dcfg["random_seed"],
+                dom_total  = dom_total,
             )
         elif use_category_tasks:
             revisit = task_strategy == "category_revisit"
