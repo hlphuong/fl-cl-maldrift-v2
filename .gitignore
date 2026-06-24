@@ -1,0 +1,31 @@
+# Virtual environments
+fl_cl_maldrift_v2/malenv/
+malenv/
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Local assistant/tool files
+.agents/
+.codex/
+fl_cl_maldrift_v2/.claude/
+.git-template-empty/
+log.txt
+*.log
+
+# IDE/OS
+.vscode/
+.idea/
+*.suo
+*.user
+.DS_Store
+Thumbs.db
+
+# Credentials
+kaggle.json

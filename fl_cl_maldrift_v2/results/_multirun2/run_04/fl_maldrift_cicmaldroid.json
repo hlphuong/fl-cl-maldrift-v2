@@ -1,0 +1,1216 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "active": 10,
+      "total": 10,
+      "tau": 0.8,
+      "avg_score": 0.05,
+      "avg_train_acc": 0.4776,
+      "task": 0
+    },
+    {
+      "round": 2,
+      "active": 10,
+      "total": 10,
+      "tau": 0.8,
+      "avg_score": 0.0,
+      "avg_train_acc": 0.4981,
+      "task": 0
+    },
+    {
+      "round": 3,
+      "active": 10,
+      "total": 10,
+      "tau": 0.8,
+      "avg_score": 0.1219,
+      "avg_train_acc": 0.5625,
+      "task": 0
+    },
+    {
+      "round": 4,
+      "active": 10,
+      "total": 10,
+      "tau": 0.6565,
+      "avg_score": 0.032,
+      "avg_train_acc": 0.558,
+      "task": 0
+    },
+    {
+      "round": 5,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5732,
+      "avg_score": 0.0717,
+      "avg_train_acc": 0.5895,
+      "task": 0
+    },
+    {
+      "round": 6,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0129,
+      "avg_train_acc": 0.6201,
+      "task": 0
+    },
+    {
+      "round": 7,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.2086,
+      "avg_train_acc": 0.6218,
+      "task": 0
+    },
+    {
+      "round": 8,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1005,
+      "avg_train_acc": 0.6381,
+      "task": 0
+    },
+    {
+      "round": 9,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0843,
+      "avg_train_acc": 0.652,
+      "task": 0
+    },
+    {
+      "round": 10,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1286,
+      "avg_train_acc": 0.6763,
+      "task": 0
+    },
+    {
+      "round": 11,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1272,
+      "avg_train_acc": 0.6755,
+      "task": 0
+    },
+    {
+      "round": 12,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1453,
+      "avg_train_acc": 0.6753,
+      "task": 0
+    },
+    {
+      "round": 13,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1407,
+      "avg_train_acc": 0.6871,
+      "task": 0
+    },
+    {
+      "round": 14,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.162,
+      "avg_train_acc": 0.6715,
+      "task": 0
+    },
+    {
+      "round": 15,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0457,
+      "avg_train_acc": 0.7011,
+      "task": 0
+    },
+    {
+      "round": 16,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1288,
+      "avg_train_acc": 0.7111,
+      "task": 0
+    },
+    {
+      "round": 17,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5097,
+      "avg_score": 0.1924,
+      "avg_train_acc": 0.6989,
+      "task": 0
+    },
+    {
+      "round": 18,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0948,
+      "avg_train_acc": 0.7268,
+      "task": 0
+    },
+    {
+      "round": 19,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1594,
+      "avg_train_acc": 0.7092,
+      "task": 0
+    },
+    {
+      "round": 20,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1581,
+      "avg_train_acc": 0.7321,
+      "task": 0
+    },
+    {
+      "round": 21,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0845,
+      "avg_train_acc": 0.7319,
+      "task": 0
+    },
+    {
+      "round": 22,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5211,
+      "avg_score": 0.2172,
+      "avg_train_acc": 0.7299,
+      "task": 0
+    },
+    {
+      "round": 23,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1647,
+      "avg_train_acc": 0.7448,
+      "task": 0
+    },
+    {
+      "round": 24,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.185,
+      "avg_train_acc": 0.7235,
+      "task": 0
+    },
+    {
+      "round": 25,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.115,
+      "avg_train_acc": 0.7652,
+      "task": 0
+    },
+    {
+      "round": 26,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1021,
+      "avg_train_acc": 0.7739,
+      "task": 1
+    },
+    {
+      "round": 27,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0159,
+      "avg_train_acc": 0.7812,
+      "task": 1
+    },
+    {
+      "round": 28,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1051,
+      "avg_train_acc": 0.7819,
+      "task": 1
+    },
+    {
+      "round": 29,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1837,
+      "avg_train_acc": 0.7742,
+      "task": 1
+    },
+    {
+      "round": 30,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1266,
+      "avg_train_acc": 0.7649,
+      "task": 1
+    },
+    {
+      "round": 31,
+      "active": 10,
+      "total": 10,
+      "tau": 0.518,
+      "avg_score": 0.2803,
+      "avg_train_acc": 0.7693,
+      "task": 1
+    },
+    {
+      "round": 32,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1474,
+      "avg_train_acc": 0.7548,
+      "task": 1
+    },
+    {
+      "round": 33,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1168,
+      "avg_train_acc": 0.7715,
+      "task": 1
+    },
+    {
+      "round": 34,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5074,
+      "avg_score": 0.1504,
+      "avg_train_acc": 0.781,
+      "task": 1
+    },
+    {
+      "round": 35,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0596,
+      "avg_train_acc": 0.7665,
+      "task": 1
+    },
+    {
+      "round": 36,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1496,
+      "avg_train_acc": 0.7755,
+      "task": 1
+    },
+    {
+      "round": 37,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1894,
+      "avg_train_acc": 0.7773,
+      "task": 1
+    },
+    {
+      "round": 38,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1046,
+      "avg_train_acc": 0.7955,
+      "task": 1
+    },
+    {
+      "round": 39,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1444,
+      "avg_train_acc": 0.8036,
+      "task": 1
+    },
+    {
+      "round": 40,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0652,
+      "avg_train_acc": 0.7885,
+      "task": 1
+    },
+    {
+      "round": 41,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0807,
+      "avg_train_acc": 0.8154,
+      "task": 1
+    },
+    {
+      "round": 42,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0561,
+      "avg_train_acc": 0.8039,
+      "task": 1
+    },
+    {
+      "round": 43,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1003,
+      "avg_train_acc": 0.8169,
+      "task": 1
+    },
+    {
+      "round": 44,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1047,
+      "avg_train_acc": 0.8257,
+      "task": 1
+    },
+    {
+      "round": 45,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5147,
+      "avg_score": 0.1763,
+      "avg_train_acc": 0.8421,
+      "task": 1
+    },
+    {
+      "round": 46,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1352,
+      "avg_train_acc": 0.8138,
+      "task": 1
+    },
+    {
+      "round": 47,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5289,
+      "avg_score": 0.2915,
+      "avg_train_acc": 0.8179,
+      "task": 1
+    },
+    {
+      "round": 48,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5026,
+      "avg_score": 0.199,
+      "avg_train_acc": 0.8345,
+      "task": 1
+    },
+    {
+      "round": 49,
+      "active": 9,
+      "total": 10,
+      "tau": 0.537,
+      "avg_score": 0.2896,
+      "avg_train_acc": 0.8342,
+      "task": 1
+    },
+    {
+      "round": 50,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0692,
+      "avg_train_acc": 0.833,
+      "task": 1
+    },
+    {
+      "round": 51,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0565,
+      "avg_train_acc": 0.8867,
+      "task": 2
+    },
+    {
+      "round": 52,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0703,
+      "avg_train_acc": 0.876,
+      "task": 2
+    },
+    {
+      "round": 53,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0925,
+      "avg_train_acc": 0.8724,
+      "task": 2
+    },
+    {
+      "round": 54,
+      "active": 9,
+      "total": 10,
+      "tau": 0.504,
+      "avg_score": 0.1503,
+      "avg_train_acc": 0.8828,
+      "task": 2
+    },
+    {
+      "round": 55,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5147,
+      "avg_score": 0.1959,
+      "avg_train_acc": 0.8742,
+      "task": 2
+    },
+    {
+      "round": 56,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5507,
+      "avg_score": 0.2871,
+      "avg_train_acc": 0.8854,
+      "task": 2
+    },
+    {
+      "round": 57,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.063,
+      "avg_train_acc": 0.8648,
+      "task": 2
+    },
+    {
+      "round": 58,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0991,
+      "avg_train_acc": 0.8693,
+      "task": 2
+    },
+    {
+      "round": 59,
+      "active": 9,
+      "total": 10,
+      "tau": 0.55,
+      "avg_score": 0.3117,
+      "avg_train_acc": 0.8455,
+      "task": 2
+    },
+    {
+      "round": 60,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.093,
+      "avg_train_acc": 0.8703,
+      "task": 2
+    },
+    {
+      "round": 61,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1797,
+      "avg_train_acc": 0.8755,
+      "task": 2
+    },
+    {
+      "round": 62,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.113,
+      "avg_train_acc": 0.8662,
+      "task": 2
+    },
+    {
+      "round": 63,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0511,
+      "avg_train_acc": 0.874,
+      "task": 2
+    },
+    {
+      "round": 64,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1556,
+      "avg_train_acc": 0.8815,
+      "task": 2
+    },
+    {
+      "round": 65,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0627,
+      "avg_train_acc": 0.8695,
+      "task": 2
+    },
+    {
+      "round": 66,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0581,
+      "avg_train_acc": 0.8797,
+      "task": 2
+    },
+    {
+      "round": 67,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0041,
+      "avg_train_acc": 0.8875,
+      "task": 2
+    },
+    {
+      "round": 68,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1698,
+      "avg_train_acc": 0.8958,
+      "task": 2
+    },
+    {
+      "round": 69,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.2195,
+      "avg_train_acc": 0.9068,
+      "task": 2
+    },
+    {
+      "round": 70,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1172,
+      "avg_train_acc": 0.9044,
+      "task": 2
+    },
+    {
+      "round": 71,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0828,
+      "avg_train_acc": 0.8872,
+      "task": 2
+    },
+    {
+      "round": 72,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1224,
+      "avg_train_acc": 0.894,
+      "task": 2
+    },
+    {
+      "round": 73,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0756,
+      "avg_train_acc": 0.8935,
+      "task": 2
+    },
+    {
+      "round": 74,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.153,
+      "avg_train_acc": 0.8924,
+      "task": 2
+    },
+    {
+      "round": 75,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1316,
+      "avg_train_acc": 0.899,
+      "task": 2
+    },
+    {
+      "round": 76,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0818,
+      "avg_train_acc": 0.798,
+      "task": 3
+    },
+    {
+      "round": 77,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1147,
+      "avg_train_acc": 0.7942,
+      "task": 3
+    },
+    {
+      "round": 78,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0832,
+      "avg_train_acc": 0.814,
+      "task": 3
+    },
+    {
+      "round": 79,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5054,
+      "avg_score": 0.2512,
+      "avg_train_acc": 0.8111,
+      "task": 3
+    },
+    {
+      "round": 80,
+      "active": 9,
+      "total": 10,
+      "tau": 0.511,
+      "avg_score": 0.184,
+      "avg_train_acc": 0.8298,
+      "task": 3
+    },
+    {
+      "round": 81,
+      "active": 8,
+      "total": 10,
+      "tau": 0.5332,
+      "avg_score": 0.1842,
+      "avg_train_acc": 0.8236,
+      "task": 3
+    },
+    {
+      "round": 82,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1101,
+      "avg_train_acc": 0.8245,
+      "task": 3
+    },
+    {
+      "round": 83,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1281,
+      "avg_train_acc": 0.8394,
+      "task": 3
+    },
+    {
+      "round": 84,
+      "active": 9,
+      "total": 10,
+      "tau": 0.516,
+      "avg_score": 0.1499,
+      "avg_train_acc": 0.8273,
+      "task": 3
+    },
+    {
+      "round": 85,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5448,
+      "avg_score": 0.2854,
+      "avg_train_acc": 0.8364,
+      "task": 3
+    },
+    {
+      "round": 86,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5325,
+      "avg_score": 0.2092,
+      "avg_train_acc": 0.8335,
+      "task": 3
+    },
+    {
+      "round": 87,
+      "active": 10,
+      "total": 10,
+      "tau": 0.528,
+      "avg_score": 0.2086,
+      "avg_train_acc": 0.8329,
+      "task": 3
+    },
+    {
+      "round": 88,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1548,
+      "avg_train_acc": 0.8375,
+      "task": 3
+    },
+    {
+      "round": 89,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0841,
+      "avg_train_acc": 0.8511,
+      "task": 3
+    },
+    {
+      "round": 90,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0648,
+      "avg_train_acc": 0.8505,
+      "task": 3
+    },
+    {
+      "round": 91,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1563,
+      "avg_train_acc": 0.8424,
+      "task": 3
+    },
+    {
+      "round": 92,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.2142,
+      "avg_train_acc": 0.8626,
+      "task": 3
+    },
+    {
+      "round": 93,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0445,
+      "avg_train_acc": 0.8673,
+      "task": 3
+    },
+    {
+      "round": 94,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0912,
+      "avg_train_acc": 0.8527,
+      "task": 3
+    },
+    {
+      "round": 95,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0491,
+      "avg_train_acc": 0.8584,
+      "task": 3
+    },
+    {
+      "round": 96,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1489,
+      "avg_train_acc": 0.8717,
+      "task": 3
+    },
+    {
+      "round": 97,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0758,
+      "avg_train_acc": 0.8636,
+      "task": 3
+    },
+    {
+      "round": 98,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5033,
+      "avg_score": 0.2018,
+      "avg_train_acc": 0.8457,
+      "task": 3
+    },
+    {
+      "round": 99,
+      "active": 8,
+      "total": 10,
+      "tau": 0.5706,
+      "avg_score": 0.3855,
+      "avg_train_acc": 0.8492,
+      "task": 3
+    },
+    {
+      "round": 100,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5966,
+      "avg_score": 0.2485,
+      "avg_train_acc": 0.8638,
+      "task": 3
+    },
+    {
+      "round": 101,
+      "active": 7,
+      "total": 10,
+      "tau": 0.6984,
+      "avg_score": 0.436,
+      "avg_train_acc": 0.4601,
+      "task": 4
+    },
+    {
+      "round": 102,
+      "active": 10,
+      "total": 10,
+      "tau": 0.6673,
+      "avg_score": 0.1742,
+      "avg_train_acc": 0.4475,
+      "task": 4
+    },
+    {
+      "round": 103,
+      "active": 10,
+      "total": 10,
+      "tau": 0.6359,
+      "avg_score": 0.1714,
+      "avg_train_acc": 0.4418,
+      "task": 4
+    },
+    {
+      "round": 104,
+      "active": 10,
+      "total": 10,
+      "tau": 0.6029,
+      "avg_score": 0.1618,
+      "avg_train_acc": 0.4557,
+      "task": 4
+    },
+    {
+      "round": 105,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5192,
+      "avg_score": 0.0695,
+      "avg_train_acc": 0.4848,
+      "task": 4
+    },
+    {
+      "round": 106,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5135,
+      "avg_score": 0.2123,
+      "avg_train_acc": 0.5314,
+      "task": 4
+    },
+    {
+      "round": 107,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0685,
+      "avg_train_acc": 0.5872,
+      "task": 4
+    },
+    {
+      "round": 108,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0026,
+      "avg_train_acc": 0.6419,
+      "task": 4
+    },
+    {
+      "round": 109,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1488,
+      "avg_train_acc": 0.6904,
+      "task": 4
+    },
+    {
+      "round": 110,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1324,
+      "avg_train_acc": 0.7574,
+      "task": 4
+    },
+    {
+      "round": 111,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5358,
+      "avg_score": 0.2839,
+      "avg_train_acc": 0.8056,
+      "task": 4
+    },
+    {
+      "round": 112,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5321,
+      "avg_score": 0.23,
+      "avg_train_acc": 0.8685,
+      "task": 4
+    },
+    {
+      "round": 113,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1144,
+      "avg_train_acc": 0.8619,
+      "task": 4
+    },
+    {
+      "round": 114,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0785,
+      "avg_train_acc": 0.8393,
+      "task": 4
+    },
+    {
+      "round": 115,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1425,
+      "avg_train_acc": 0.8288,
+      "task": 4
+    },
+    {
+      "round": 116,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1522,
+      "avg_train_acc": 0.827,
+      "task": 4
+    },
+    {
+      "round": 117,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0263,
+      "avg_train_acc": 0.8237,
+      "task": 4
+    },
+    {
+      "round": 118,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1178,
+      "avg_train_acc": 0.8237,
+      "task": 4
+    },
+    {
+      "round": 119,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0655,
+      "avg_train_acc": 0.8237,
+      "task": 4
+    },
+    {
+      "round": 120,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.051,
+      "avg_train_acc": 0.8237,
+      "task": 4
+    },
+    {
+      "round": 121,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.155,
+      "avg_train_acc": 0.8237,
+      "task": 4
+    },
+    {
+      "round": 122,
+      "active": 9,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1056,
+      "avg_train_acc": 0.8474,
+      "task": 4
+    },
+    {
+      "round": 123,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.1098,
+      "avg_train_acc": 0.8302,
+      "task": 4
+    },
+    {
+      "round": 124,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0868,
+      "avg_train_acc": 0.8385,
+      "task": 4
+    },
+    {
+      "round": 125,
+      "active": 10,
+      "total": 10,
+      "tau": 0.5,
+      "avg_score": 0.0,
+      "avg_train_acc": 0.8276,
+      "task": 4
+    }
+  ],
+  "tasks": [
+    {
+      "task": 0,
+      "acc": 0.7752873563218391,
+      "precision": 0.7309309257088212,
+      "f1": 0.8363674297630528,
+      "recall": 0.9784313725490197,
+      "cl": {
+        "ACC": 0.7753,
+        "Forgetting": 0.0,
+        "BWT": 0.0,
+        "FWT": 0.0,
+        "F1": 0.8364,
+        "F1_BWT": 0.0,
+        "Recall": 0.9784,
+        "Recall_BWT": 0.0
+      }
+    },
+    {
+      "task": 1,
+      "acc": 0.8405286343612335,
+      "precision": 0.8253613165033951,
+      "f1": 0.8931313465292925,
+      "recall": 0.9735483870967743,
+      "cl": {
+        "ACC": 0.8312,
+        "Forgetting": 0.0,
+        "BWT": 0.0233,
+        "FWT": 0.2991,
+        "F1": 0.8795,
+        "F1_BWT": 0.0147,
+        "Recall": 0.977,
+        "Recall_BWT": 0.001
+      }
+    },
+    {
+      "task": 2,
+      "acc": 0.9389880952380951,
+      "precision": 0.9321828943523853,
+      "f1": 0.9626781002627072,
+      "recall": 0.9958333333333332,
+      "cl": {
+        "ACC": 0.8617,
+        "Forgetting": 0.0,
+        "BWT": 0.0101,
+        "FWT": 0.3591,
+        "F1": 0.9023,
+        "F1_BWT": 0.005,
+        "Recall": 0.9737,
+        "Recall_BWT": -0.0089
+      }
+    },
+    {
+      "task": 3,
+      "acc": 0.8777777777777779,
+      "precision": 0.8758202112154596,
+      "f1": 0.9191401527322312,
+      "recall": 0.9688888888888888,
+      "cl": {
+        "ACC": 0.8393,
+        "Forgetting": 0.0188,
+        "BWT": -0.0188,
+        "FWT": 0.3451,
+        "F1": 0.8907,
+        "F1_BWT": -0.0121,
+        "Recall": 0.9735,
+        "Recall_BWT": -0.0057
+      }
+    },
+    {
+      "task": 4,
+      "acc": 0.858888888888889,
+      "precision": 0.7776190476190477,
+      "f1": 0.5128129117259552,
+      "recall": 0.41111111111111115,
+      "cl": {
+        "ACC": 0.5594,
+        "Forgetting": 0.3737,
+        "BWT": -0.3737,
+        "FWT": 0.3027,
+        "F1": 0.4151,
+        "F1_BWT": -0.5122,
+        "Recall": 0.2862,
+        "Recall_BWT": -0.7242
+      }
+    }
+  ]
+}

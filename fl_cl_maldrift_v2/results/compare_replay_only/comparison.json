@@ -1,0 +1,44 @@
+{
+  "fedavg": {
+    "ACC": 0.7848,
+    "Forgetting": 0.0,
+    "BWT": 0.0406,
+    "FWT": 0.1878,
+    "Precision": 0.8304,
+    "Precision_BWT": 0.0644,
+    "F1": 0.7521,
+    "F1_BWT": 0.0273,
+    "Recall": 0.7235,
+    "Recall_BWT": -0.0606,
+    "EscalationRate": 0.0,
+    "RecoveryRate": 0.0
+  },
+  "fl_maldrift": {
+    "ACC": 0.7845,
+    "Forgetting": 0.0,
+    "BWT": 0.1123,
+    "FWT": 0.1396,
+    "Precision": 0.8288,
+    "Precision_BWT": 0.1048,
+    "F1": 0.7529,
+    "F1_BWT": 0.083,
+    "Recall": 0.7269,
+    "Recall_BWT": -0.0442,
+    "EscalationRate": 0.0,
+    "RecoveryRate": 0.0
+  },
+  "fl_cl_maldrift": {
+    "ACC": 0.8061,
+    "Forgetting": 0.0,
+    "BWT": 0.1038,
+    "FWT": 0.1415,
+    "Precision": 0.8392,
+    "Precision_BWT": 0.0865,
+    "F1": 0.7803,
+    "F1_BWT": 0.0836,
+    "Recall": 0.759,
+    "Recall_BWT": -0.017,
+    "EscalationRate": 0.0049,
+    "RecoveryRate": 0.0
+  }
+}

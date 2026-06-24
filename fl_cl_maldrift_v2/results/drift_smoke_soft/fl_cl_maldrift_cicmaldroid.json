@@ -1,0 +1,117 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "active": 10,
+      "total": 10,
+      "tau": 0.2,
+      "avg_score": 0.0,
+      "avg_train_acc": 0.636,
+      "task": 0
+    },
+    {
+      "round": 2,
+      "active": 10,
+      "total": 10,
+      "tau": 0.2,
+      "avg_score": 0.0,
+      "avg_train_acc": 0.7111,
+      "task": 0
+    },
+    {
+      "round": 3,
+      "active": 7,
+      "total": 10,
+      "tau": 0.2585,
+      "avg_score": 0.1692,
+      "avg_train_acc": 0.8332,
+      "task": 1
+    },
+    {
+      "round": 4,
+      "active": 8,
+      "total": 10,
+      "tau": 0.3024,
+      "avg_score": 0.2057,
+      "avg_train_acc": 0.7684,
+      "task": 1
+    },
+    {
+      "round": 5,
+      "active": 9,
+      "total": 10,
+      "tau": 0.3218,
+      "avg_score": 0.1555,
+      "avg_train_acc": 0.6373,
+      "task": 2
+    },
+    {
+      "round": 6,
+      "active": 9,
+      "total": 10,
+      "tau": 0.3424,
+      "avg_score": 0.1774,
+      "avg_train_acc": 0.7903,
+      "task": 2
+    }
+  ],
+  "tasks": [
+    {
+      "task": 0,
+      "acc": 0.47785714285714287,
+      "precision": 0.399260181768723,
+      "f1": 0.2261422961971638,
+      "recall": 0.16,
+      "cl": {
+        "ACC": 0.4779,
+        "Forgetting": 0.0,
+        "BWT": 0.0,
+        "FWT": 0.0,
+        "Precision": 0.3993,
+        "Precision_BWT": 0.0,
+        "F1": 0.2261,
+        "F1_BWT": 0.0,
+        "Recall": 0.16,
+        "Recall_BWT": 0.0
+      }
+    },
+    {
+      "task": 1,
+      "acc": 0.5102409638554216,
+      "precision": 0.5057331872049737,
+      "f1": 0.6671259231520572,
+      "recall": 0.9819277108433736,
+      "cl": {
+        "ACC": 0.5065,
+        "Forgetting": 0.0,
+        "BWT": 0.0125,
+        "FWT": -0.0572,
+        "Precision": 0.5037,
+        "Precision_BWT": 0.0512,
+        "F1": 0.6634,
+        "F1_BWT": 0.2167,
+        "Recall": 0.9735,
+        "Recall_BWT": 0.4025
+      }
+    },
+    {
+      "task": 2,
+      "acc": 0.8014598540145986,
+      "precision": 0.7260517109440441,
+      "f1": 0.8327428787330742,
+      "recall": 0.9795620437956206,
+      "cl": {
+        "ACC": 0.7653,
+        "Forgetting": 0.0,
+        "BWT": 0.2532,
+        "FWT": -0.0301,
+        "Precision": 0.7215,
+        "Precision_BWT": 0.2667,
+        "F1": 0.7874,
+        "F1_BWT": 0.3182,
+        "Recall": 0.884,
+        "Recall_BWT": 0.2652
+      }
+    }
+  ]
+}
