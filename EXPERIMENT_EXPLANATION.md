@@ -118,7 +118,7 @@ Phân phối class:
 
 Với tỷ lệ 2:1, mô hình nhìn thấy nhiều malware hơn, nên thường học tốt hơn đặc trưng malware. Recall và F1 thường tăng. Tuy nhiên Precision có thể giảm nhẹ nếu mô hình dự đoán malware mạnh hơn và báo nhầm một số benign thành malware.
 
-Kết quả 2:1, `category_strict`, single-run:
+Kết quả 2:1, single-run trước khi đổi sang `category_dominant`:
 
 | Method | ACC | Prec | F1 | Recall | Forget | BWT | FWT |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -126,7 +126,7 @@ Kết quả 2:1, `category_strict`, single-run:
 | FL-MalDrift | 0.9163 | 0.9147 | 0.9386 | 0.9652 | 0.0095 | 0.0013 | 0.2655 |
 | FL-CL-MalDrift | 0.9217 | 0.9147 | 0.9430 | 0.9738 | 0.0046 | 0.0107 | 0.3372 |
 
-Kết quả 2:1, 5-fold, 5 clients:
+Kết quả 2:1, 5-fold, 5 clients trước khi đổi sang `category_dominant`:
 
 | Method | ACC | Prec | F1 | Recall | Forget | BWT | FWT |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -145,25 +145,33 @@ FL-CL-MalDrift có FWT cao nhất.
 
 ## 4. Dữ Liệu Được Chia Thành Task Như Thế Nào
 
-Với `--task_strategy category_strict`, dữ liệu được chia thành 5 task:
+Với `--task_strategy category_dominant`, dữ liệu được chia thành 5 task. Điểm quan trọng là task nào cũng có đủ 4 họ malware:
 
 ```text
-Task 0 = Adware-dominant
-Task 1 = Banking-dominant
-Task 2 = SMS-dominant
-Task 3 = Riskware-dominant
-Task 4 = MixedHeldout
+Task 0 = đủ Adware, Banking, SMS, Riskware; Adware chiếm đa số
+Task 1 = đủ Adware, Banking, SMS, Riskware; Banking chiếm đa số
+Task 2 = đủ Adware, Banking, SMS, Riskware; SMS chiếm đa số
+Task 3 = đủ Adware, Banking, SMS, Riskware; Riskware chiếm đa số
+Task 4 = đủ Adware, Banking, SMS, Riskware; SMS chiếm đa số lần 2
 ```
 
 Với dataset 2:1 hiện tại:
 
-| Task | Domain | Malware | Benign | Total |
-|---:|---|---:|---:|---:|
-| 0 | Adware | 408 | 204 | 612 |
-| 1 | Banking | 664 | 332 | 996 |
-| 2 | SMS | 1195 | 598 | 1793 |
-| 3 | Riskware | 787 | 393 | 1180 |
-| 4 | MixedHeldout | 536 | 268 | 804 |
+| Task | Họ chiếm đa số | Adware | Banking | SMS | Riskware | Benign | Total |
+|---:|---|---:|---:|---:|---:|---:|---:|
+| 0 | Adware | 359 | 49 | 117 | 58 | 291 | 874 |
+| 1 | Banking | 30 | 585 | 117 | 58 | 395 | 1185 |
+| 2 | SMS | 30 | 49 | 527 | 58 | 332 | 996 |
+| 3 | Riskware | 30 | 49 | 117 | 693 | 445 | 1334 |
+| 4 | SMS | 30 | 49 | 527 | 58 | 332 | 996 |
+
+Nếu muốn làm rõ catastrophic forgetting hơn, dùng thêm:
+
+```text
+--dominant_ratio 0.90
+```
+
+Khi đó mỗi task vẫn có đủ 4 họ malware, nhưng họ chiếm đa số sẽ áp đảo hơn. Ví dụ Adware-dominant sẽ có rất nhiều Adware và chỉ còn ít Banking/SMS/Riskware. Khi mô hình học sang task Banking/SMS/Riskware, phân phối Adware cũ xuất hiện ít hơn, nên FedAvg và FL-MalDrift dễ giảm hiệu năng trên task cũ hơn. FL-CL-MalDrift có Replay Buffer và EWC nên có điều kiện thể hiện rõ hơn ở `Forget` thấp hơn và `BWT` ít âm hơn.
 
 Trong mỗi task, code chia tiếp:
 
@@ -361,15 +369,15 @@ Precision có thể giảm nhẹ:
 
 Trong malware detection, Recall cao rất quan trọng vì bỏ sót malware nguy hiểm hơn báo nhầm benign.
 
-### 3. `category_strict` tạo drift rõ hơn
+### 3. `category_dominant` tạo drift hợp lý hơn
 
-`category_strict` tạo chuỗi task:
+`category_dominant` tạo chuỗi task:
 
 ```text
-Adware -> Banking -> SMS -> Riskware -> MixedHeldout
+Adware-dominant -> Banking-dominant -> SMS-dominant -> Riskware-dominant -> SMS-dominant
 ```
 
-Do các task khác domain nhau rõ ràng, catastrophic forgetting dễ quan sát hơn. Replay + EWC của FL-CL-MalDrift có điều kiện thể hiện tác dụng.
+Mỗi task vẫn có đủ Adware, Banking, SMS và Riskware, nên mô hình không bị rơi vào tình huống quá nhân tạo là task chỉ chứa một họ malware. Concept drift đến từ việc tỷ trọng từng họ malware thay đổi theo thời gian. Cách này hợp lý hơn để chứng minh catastrophic forgetting: mô hình vẫn luôn thấy các họ malware cũ, nhưng nếu không có Replay/EWC thì hiệu năng trên các phân phối cũ vẫn có thể giảm khi task mới chiếm ưu thế.
 
 ### 4. Vì sao FL-MalDrift đôi khi gần FedAvg
 
@@ -428,4 +436,3 @@ FL-CL-MalDrift giảm forgetting rõ rệt.
 FL-CL-MalDrift có BWT dương, chứng tỏ học task mới không làm suy giảm task cũ như FedAvg/FL-MalDrift.
 FL-CL-MalDrift có FWT cao nhất, chứng tỏ kiến thức cũ chuyển giao sang task mới tốt hơn.
 ```
-

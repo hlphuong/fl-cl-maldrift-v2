@@ -10,6 +10,7 @@ FL_CL_MalDrift_v2/
 |-- FL_CL_MalDrift_Summary_1.docx         # file tóm tắt/yêu cầu thiết kế
 |-- RUN_GUIDE.md                          # hướng dẫn chạy project
 |-- EXPERIMENT_EXPLANATION.md             # giải thích luồng thí nghiệm
+|-- RESULT_NOTES.md                        # nhận xét cách chia dữ liệu và kết quả
 |-- fl_cl_maldrift_v2/
 |   |-- main.py                           # file chính để chạy training/testing
 |   |-- config.py                         # cấu hình hyperparameter tập trung
@@ -109,7 +110,7 @@ FL-CL-MalDrift:
 Lệnh so sánh chính với 5 task, 5 client:
 
 ```powershell
-.\malenv\Scripts\python.exe main.py --compare --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_strict --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --out results\compare_5clients_strict_2to1
+.\malenv\Scripts\python.exe main.py --compare --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_dominant --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --out results\compare_5clients_dominant_2to1
 ```
 
 Ý nghĩa tham số:
@@ -130,8 +131,14 @@ Lệnh so sánh chính với 5 task, 5 client:
 --clients 5
   Dùng 5 client trong federated learning.
 
---task_strategy category_strict
-  Chia task theo từng họ mã độc rõ ràng để tạo concept drift mạnh.
+--task_strategy category_dominant
+  Chia task sao cho task nào cũng có đủ Adware, Banking, SMS, Riskware và Benign.
+  Trong mỗi task, một họ malware sẽ chiếm đa số để tạo concept drift.
+
+--dominant_ratio 0.90
+  Dùng thêm khi muốn làm drift mạnh hơn và bật rõ catastrophic forgetting.
+  Mặc định là 0.75. Giá trị 0.90 vẫn giữ đủ 4 họ malware trong mỗi task,
+  nhưng họ chiếm đa số sẽ áp đảo hơn.
 
 --partition_strategy category
   Chia train data cho client theo kiểu non-IID/category specialization.
@@ -160,7 +167,13 @@ Lệnh so sánh chính với 5 task, 5 client:
 Đây là lệnh nên dùng để lấy kết quả ổn định nhất:
 
 ```powershell
-.\malenv\Scripts\python.exe main.py --kfold 5 --compare --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_strict --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --out results\kfold5_clients5_compare
+.\malenv\Scripts\python.exe main.py --kfold 5 --compare --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_dominant --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --out results\kfold5_clients5_dominant
+```
+
+Nếu mục tiêu là làm rõ phần catastrophic forgetting, dùng bản drift mạnh hơn:
+
+```powershell
+.\malenv\Scripts\python.exe main.py --kfold 5 --compare --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_dominant --dominant_ratio 0.90 --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --out results\kfold5_clients5_dominant_r090
 ```
 
 Luồng chạy:
@@ -184,9 +197,9 @@ FL-CL-MalDrift
 Các file kết quả chính:
 
 ```text
-results/kfold5_clients5_compare/kfold_per_fold.csv
-results/kfold5_clients5_compare/kfold_per_task.csv
-results/kfold5_clients5_compare/kfold_summary.csv
+results/kfold5_clients5_dominant/kfold_per_fold.csv
+results/kfold5_clients5_dominant/kfold_per_task.csv
+results/kfold5_clients5_dominant/kfold_summary.csv
 ```
 
 ## 6. Xuất Bảng Tổng Hợp CSV Và PNG
@@ -194,14 +207,14 @@ results/kfold5_clients5_compare/kfold_summary.csv
 Sau khi chạy K-Fold, xuất bảng tổng hợp theo format `Scenario / Task / Method`:
 
 ```powershell
-.\malenv\Scripts\python.exe scripts\export_kfold_task_table.py --result_dir results\kfold5_clients5_compare --out_prefix kfold_task_summary_table_full
+.\malenv\Scripts\python.exe scripts\export_kfold_task_table.py --result_dir results\kfold5_clients5_dominant --out_prefix kfold_task_summary_table_full
 ```
 
 File xuất ra:
 
 ```text
-results/kfold5_clients5_compare/kfold_task_summary_table_full.csv
-results/kfold5_clients5_compare/kfold_task_summary_table_full.png
+results/kfold5_clients5_dominant/kfold_task_summary_table_full.csv
+results/kfold5_clients5_dominant/kfold_task_summary_table_full.png
 ```
 
 Bảng gồm:
@@ -220,7 +233,7 @@ Lưu ý: `Forget`, `BWT`, `FWT` là metric của cả chuỗi continual learning
 Lệnh này dùng để kiểm tra cơ chế drift loop, escalation và recovery:
 
 ```powershell
-.\malenv\Scripts\python.exe main.py --method fl_cl_maldrift --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_strict --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --drc_stress --out results\drc_stress_5clients_2to1
+.\malenv\Scripts\python.exe main.py --method fl_cl_maldrift --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_dominant --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --drc_stress --out results\drc_stress_5clients_dominant_2to1
 ```
 
 Cách đọc:
@@ -250,4 +263,3 @@ RecRate > 0
 | `utils/metrics.py` | Tính ACC, Precision, Recall, F1, Forgetting, BWT, FWT. |
 | `utils/logger.py` | Lưu JSON, CSV, PNG kết quả. |
 | `scripts/export_kfold_task_table.py` | Xuất bảng tổng hợp K-Fold thành CSV và PNG. |
-
