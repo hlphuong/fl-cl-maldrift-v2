@@ -1,33 +1,37 @@
-# Giai thich luong thuc nghiem va ket qua
+# Giải Thích Luồng Thực Nghiệm Và Kết Quả
 
-File nay giai thich chi tiet luong chay, cach chia du lieu, nguong drift, cac chi so danh gia, va vi sao ket qua 1:1 khac 2:1.
+Tài liệu này giải thích chi tiết luồng chạy, cách chia dữ liệu, ngưỡng xác định drift, ý nghĩa các chỉ số, và vì sao kết quả giữa dataset 1:1 và 2:1 khác nhau.
 
-## 1. Muc tieu thuc nghiem
+## 1. Mục Tiêu Thực Nghiệm
 
-Project so sanh 3 phuong phap trong bai toan phat hien malware Android co concept drift:
+Project so sánh 3 phương pháp trong bài toán phát hiện malware Android dưới concept drift:
 
 ```text
 FedAvg
-  Federated Learning co ban, khong drift-aware, khong continual learning.
+  Federated Learning cơ bản.
+  Không có drift-aware aggregation.
+  Không có continual learning.
 
 FL-MalDrift
-  Co drift-aware aggregation: loc/down-weight client co drift score cao.
-  Khong co replay/EWC nen van co nguy co quen task cu.
+  Có drift-aware aggregation.
+  Server lọc hoặc giảm trọng số client có drift score cao.
+  Không có Replay/EWC nên vẫn có nguy cơ quên task cũ.
 
 FL-CL-MalDrift
-  FL-MalDrift + Drift Resolution Controller + Replay Buffer + EWC.
-  Muc tieu: vua phat hien malware tot, vua giam catastrophic forgetting.
+  Kế thừa FL-MalDrift.
+  Thêm Drift Resolution Controller, Replay Buffer và EWC.
+  Mục tiêu là vừa phát hiện malware tốt, vừa giảm catastrophic forgetting.
 ```
 
-## 2. Du lieu CICMalDroid duoc xu ly the nao
+## 2. Dataset CICMalDroid Được Xử Lý Như Thế Nào
 
-CSV raw duoc doc tu thu muc `CSV/`, uu tien file:
+CSV gốc được đọc từ thư mục `CSV/`, ưu tiên file:
 
 ```text
 feature_vectors_syscallsbinders_frequency_5_Cat.csv
 ```
 
-Cot label goc la `Class`:
+Nhãn gốc là `Class`:
 
 ```text
 1 = Adware
@@ -37,36 +41,36 @@ Cot label goc la `Class`:
 5 = Benign
 ```
 
-Trong bai toan binary malware detection:
+Khi chuyển sang bài toán binary malware detection:
 
 ```text
 Class 1..4 -> label 1 = malware
 Class 5    -> label 0 = benign
 ```
 
-Tien xu ly:
+Các bước tiền xử lý:
 
 ```text
-1. Doc CSV raw
-2. Lay cac cot numeric
-3. Xu ly NaN/Inf
-4. Loai cot constant
-5. Chon top 200 features bang mutual information
-6. Lay mau theo ty le malware:benign
-7. Luu ra data/cicmaldroid/features.csv
+1. Đọc CSV gốc.
+2. Chọn các cột numeric.
+3. Xử lý NaN và Inf.
+4. Loại cột constant.
+5. Chọn top 200 features bằng mutual information.
+6. Lấy mẫu theo tỷ lệ malware:benign.
+7. Lưu ra data/cicmaldroid/features.csv.
 ```
 
-## 3. Dataset 1:1 va 2:1
+## 3. Dataset 1:1 Và 2:1
 
 ### Dataset 1:1
 
-Lenh:
+Lệnh tạo:
 
 ```powershell
 .\malenv\Scripts\python.exe prepare_cicmaldroid.py --force --malware_ratio 1.0
 ```
 
-So luong:
+Số lượng:
 
 ```text
 Benign  = 1795
@@ -74,9 +78,9 @@ Malware = 1795
 Total   = 3590
 ```
 
-Voi thiet lap 1:1, mo hinh hoc benign va malware can bang. Ket qua detection co the on, nhung recall malware thuong khong duoc nhan manh bang 2:1.
+Với tỷ lệ 1:1, mô hình học benign và malware cân bằng. Kết quả detection có thể ổn, nhưng recall trên malware thường không được nhấn mạnh bằng tỷ lệ 2:1.
 
-Ket qua single-run da ghi nhan:
+Kết quả single-run đã ghi nhận:
 
 | Method | ACC | Prec | F1 | Recall | Forget | BWT | FWT |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -84,17 +88,17 @@ Ket qua single-run da ghi nhan:
 | FL-MalDrift | 0.7845 | 0.8288 | 0.7529 | 0.7269 | 0.0000 | 0.1123 | 0.1396 |
 | FL-CL-MalDrift | 0.8303 | 0.8299 | 0.8162 | 0.8369 | 0.0000 | 0.1082 | 0.1847 |
 
-Bang nay cho thay FL-CL-MalDrift cai thien ACC/F1/Recall, nhung `Forget=0` nen chua phai bang chung manh ve catastrophic forgetting.
+Bang này cho thấy FL-CL-MalDrift cải thiện ACC/F1/Recall, nhưng `Forget = 0`, nên chưa phải bằng chứng mạnh cho phần catastrophic forgetting.
 
 ### Dataset 2:1
 
-Lenh:
+Lệnh tạo:
 
 ```powershell
 .\malenv\Scripts\python.exe prepare_cicmaldroid.py --force --malware_ratio 2.0
 ```
 
-So luong hien tai:
+Số lượng hiện tại:
 
 ```text
 Benign  = 1795
@@ -102,9 +106,9 @@ Malware = 3590
 Total   = 5385
 ```
 
-Phan phoi class:
+Phân phối class:
 
-| Class | Loai | So mau |
+| Class | Loại | Số mẫu |
 |---:|---|---:|
 | 1 | Adware | 479 |
 | 2 | Banking | 781 |
@@ -112,9 +116,9 @@ Phan phoi class:
 | 4 | Riskware | 925 |
 | 5 | Benign | 1795 |
 
-Voi 2:1, mo hinh thay nhieu malware hon, nen Recall/F1 tren malware thuong tang. Tuy nhien Precision co the giam nhe neu mo hinh du doan malware "manh tay" hon va bao nham mot so benign thanh malware.
+Với tỷ lệ 2:1, mô hình nhìn thấy nhiều malware hơn, nên thường học tốt hơn đặc trưng malware. Recall và F1 thường tăng. Tuy nhiên Precision có thể giảm nhẹ nếu mô hình dự đoán malware mạnh hơn và báo nhầm một số benign thành malware.
 
-Ket qua 2:1, `category_strict`, 10 clients, single-run:
+Kết quả 2:1, `category_strict`, single-run:
 
 | Method | ACC | Prec | F1 | Recall | Forget | BWT | FWT |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -122,26 +126,26 @@ Ket qua 2:1, `category_strict`, 10 clients, single-run:
 | FL-MalDrift | 0.9163 | 0.9147 | 0.9386 | 0.9652 | 0.0095 | 0.0013 | 0.2655 |
 | FL-CL-MalDrift | 0.9217 | 0.9147 | 0.9430 | 0.9738 | 0.0046 | 0.0107 | 0.3372 |
 
-Ket qua 2:1, 5-fold, 5 clients:
+Kết quả 2:1, 5-fold, 5 clients:
 
 | Method | ACC | Prec | F1 | Recall | Forget | BWT | FWT |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| FedAvg | 0.9033 +/- 0.0145 | 0.9122 +/- 0.0067 | 0.9283 +/- 0.0116 | 0.9471 +/- 0.0199 | 0.0206 +/- 0.0069 | -0.0150 +/- 0.0108 | 0.2506 +/- 0.0256 |
-| FL-MalDrift | 0.9026 +/- 0.0149 | 0.9113 +/- 0.0064 | 0.9279 +/- 0.0120 | 0.9469 +/- 0.0203 | 0.0226 +/- 0.0092 | -0.0169 +/- 0.0128 | 0.2524 +/- 0.0204 |
-| FL-CL-MalDrift | 0.9169 +/- 0.0112 | 0.9143 +/- 0.0122 | 0.9394 +/- 0.0082 | 0.9669 +/- 0.0112 | 0.0071 +/- 0.0027 | 0.0033 +/- 0.0062 | 0.3151 +/- 0.0227 |
+| FedAvg | 0.9033 ± 0.0145 | 0.9122 ± 0.0067 | 0.9283 ± 0.0116 | 0.9471 ± 0.0199 | 0.0206 ± 0.0069 | -0.0150 ± 0.0108 | 0.2506 ± 0.0256 |
+| FL-MalDrift | 0.9026 ± 0.0149 | 0.9113 ± 0.0064 | 0.9279 ± 0.0120 | 0.9469 ± 0.0203 | 0.0226 ± 0.0092 | -0.0169 ± 0.0128 | 0.2524 ± 0.0204 |
+| FL-CL-MalDrift | 0.9169 ± 0.0112 | 0.9143 ± 0.0122 | 0.9394 ± 0.0082 | 0.9669 ± 0.0112 | 0.0071 ± 0.0027 | 0.0033 ± 0.0062 | 0.3151 ± 0.0227 |
 
-Ket luan tu bang 5-fold:
+Kết luận từ bảng 5-fold:
 
 ```text
-FL-CL-MalDrift co ACC, F1, Recall cao nhat.
-FL-CL-MalDrift co Forget thap nhat.
-FL-CL-MalDrift co BWT duong, trong khi FedAvg va FL-MalDrift am.
-FL-CL-MalDrift co FWT cao nhat.
+FL-CL-MalDrift có ACC, F1, Recall cao nhất.
+FL-CL-MalDrift có Forget thấp nhất.
+FL-CL-MalDrift có BWT dương, trong khi FedAvg và FL-MalDrift âm.
+FL-CL-MalDrift có FWT cao nhất.
 ```
 
-## 4. Chia task nhu the nao
+## 4. Dữ Liệu Được Chia Thành Task Như Thế Nào
 
-Voi `--task_strategy category_strict`, du lieu duoc chia thanh 5 task:
+Với `--task_strategy category_strict`, dữ liệu được chia thành 5 task:
 
 ```text
 Task 0 = Adware-dominant
@@ -151,7 +155,7 @@ Task 3 = Riskware-dominant
 Task 4 = MixedHeldout
 ```
 
-Voi dataset 2:1 hien tai, toan bo 5 task co:
+Với dataset 2:1 hiện tại:
 
 | Task | Domain | Malware | Benign | Total |
 |---:|---|---:|---:|---:|
@@ -161,7 +165,7 @@ Voi dataset 2:1 hien tai, toan bo 5 task co:
 | 3 | Riskware | 787 | 393 | 1180 |
 | 4 | MixedHeldout | 536 | 268 | 804 |
 
-Trong moi task, code chia tiep:
+Trong mỗi task, code chia tiếp:
 
 ```text
 70% train
@@ -169,62 +173,62 @@ Trong moi task, code chia tiep:
 20% test
 ```
 
-Sau do train set cua moi task duoc chia cho client theo `--partition_strategy category` de tao non-IID.
+Sau đó train set của từng task được chia cho các client theo `--partition_strategy category` để tạo non-IID.
 
-## 5. K-Fold va Task chay theo thu tu nao
+## 5. K-Fold Và Task Chạy Theo Thứ Tự Nào
 
-Thu tu dung la:
+Thứ tự đúng là:
 
 ```text
-K-Fold la vong ngoai.
-Task la vong trong.
+K-Fold là vòng ngoài.
+Task là vòng trong.
 ```
 
-Cu the:
+Cụ thể:
 
 ```text
 Fold 1:
-  train subset -> chia thanh Task 0..4 -> hoc tuan tu Task 0 -> 4
+  train subset -> chia thành Task 0..4 -> học tuần tự Task 0 -> 4
 
 Fold 2:
-  train subset -> chia thanh Task 0..4 -> hoc tuan tu Task 0 -> 4
+  train subset -> chia thành Task 0..4 -> học tuần tự Task 0 -> 4
 
 ...
 
 Fold 5:
-  train subset -> chia thanh Task 0..4 -> hoc tuan tu Task 0 -> 4
+  train subset -> chia thành Task 0..4 -> học tuần tự Task 0 -> 4
 ```
 
-Voi 5-fold tren 5385 mau:
+Với 5-fold trên 5385 mẫu:
 
 ```text
-Moi fold:
-  Outer train = 4308 mau = 2872 malware + 1436 benign
-  Outer test  = 1077 mau = 718 malware + 359 benign
+Mỗi fold:
+  Outer train = 4308 mẫu = 2872 malware + 1436 benign
+  Outer test  = 1077 mẫu = 718 malware + 359 benign
 ```
 
-Luu y: Trong code hien tai, K-Fold dung train subset de tao 5 continual tasks. Cac metric continual learning duoc tinh tren test noi bo cua tung task.
+Trong code hiện tại, K-Fold dùng train subset để tạo 5 continual tasks. Các metric continual learning được tính trên test nội bộ của từng task.
 
-## 6. Nguong drift duoc xac dinh the nao
+## 6. Ngưỡng Drift Được Xác Định Như Thế Nào
 
-### Drift score cua client
+### Drift score của client
 
-Trong moi local round:
+Trong mỗi local round:
 
 ```text
-1. Client train tren local data.
-2. Lay stream loi du doan: error = 1 neu du doan sai, 0 neu dung.
-3. Drift detector cap nhat tren error stream.
-4. Detector tra ve drift_score trong [0,1].
+1. Client train trên local data.
+2. Tạo error stream: error = 1 nếu dự đoán sai, 0 nếu dự đoán đúng.
+3. Drift detector cập nhật trên error stream.
+4. Detector trả về drift_score trong khoảng [0,1].
 ```
 
-`drift_score` cang cao thi client cang co dau hieu drift.
+`drift_score` càng cao thì client càng có dấu hiệu drift.
 
-### Nguong server tau
+### Ngưỡng server `tau`
 
-Server co nguong drift `tau`.
+Server có ngưỡng drift `tau`.
 
-Trong cac lenh thuc nghiem chinh:
+Trong các lệnh thực nghiệm chính:
 
 ```text
 tau_init = 0.25
@@ -232,24 +236,25 @@ tau_min  = 0.2
 warmup_rounds = 0
 ```
 
-Client duoc xem la drift neu:
+Client được xem là drift nếu:
 
 ```text
 drift_score > tau
 ```
 
-Server drift-aware se:
+Server drift-aware sẽ:
 
 ```text
-accept client neu drift_score <= 1.5 * tau
+accept client nếu drift_score <= 1.5 * tau
 down-weight update theo w = n_samples * max(0.1, 1 - drift_score)
-cap nhat tau bang EWMA dua tren cac drift score gan day
+cập nhật tau bằng EWMA dựa trên các drift score gần đây
 ```
 
-Cong thuc tau trong `fl/server.py`:
+Công thức cập nhật `tau` trong `fl/server.py`:
 
 ```text
 tau_hat = mean_recent_score + k_sigma * std_recent_score
+
 tau_t = clip(
     ewma_alpha * tau_{t-1}
     + (1 - ewma_alpha) * tau_hat
@@ -259,7 +264,7 @@ tau_t = clip(
 )
 ```
 
-Voi config mac dinh:
+Với config mặc định:
 
 ```text
 ewma_alpha = 0.8
@@ -271,7 +276,7 @@ tau_max = 1.0
 
 ### DRC stage
 
-DRC dung `drift_score` va `tau` de chon stage:
+DRC dùng `drift_score` và `tau` để chọn stage:
 
 ```text
 score <= tau:
@@ -284,10 +289,10 @@ score > tau, K1 < count <= K2:
   EWC
 
 score > tau, count > K2:
-  ESCALATION, client bi withheld
+  ESCALATION, client bị withheld
 ```
 
-Config mac dinh:
+Config mặc định:
 
 ```text
 K1 = 3
@@ -301,118 +306,126 @@ Recovery:
 
 ```text
 tau_re = tau + delta
-neu EMA(drift_score) < tau_re trong R round lien tiep
--> client recovered va rejoin federation
+nếu EMA(drift_score) < tau_re trong R round liên tiếp
+-> client recovered và rejoin federation
 ```
 
-`--drc_stress` se ha:
+`--drc_stress` sẽ hạ:
 
 ```text
 K1 = 1
 K2 = 1
 ```
 
-Muc dich la ep DRC di qua Escalation/Recovery de kiem tra drift loop.
+Mục đích là ép DRC đi qua Escalation/Recovery để kiểm tra drift loop.
 
-## 7. Cac chi so ket qua
+## 7. Ý Nghĩa Các Chỉ Số
 
-| Metric | Y nghia | Tot khi |
+| Metric | Ý nghĩa | Tốt khi |
 |---|---|---|
-| ACC | Ty le du doan dung tren tong mau | Cao |
-| Precision | Trong cac mau bi bao la malware, bao nhieu that su la malware | Cao |
-| Recall | Trong malware that, mo hinh bat duoc bao nhieu | Cao |
-| F1 | Trung binh dieu hoa Precision va Recall | Cao |
-| Forget | Muc giam hieu nang tren task cu sau khi hoc task moi | Thap |
-| BWT | Anh huong cua task moi len task cu | Cao, gan 0 hoac duong |
-| FWT | Kien thuc task cu giup task moi truoc khi hoc task moi | Cao |
-| EscRate | Ty le drift dan den escalation | >0 trong stress test |
-| RecRate | Ty le client escalation co the recovery | Cao trong stress test |
+| ACC | Tỷ lệ dự đoán đúng trên tổng mẫu | Cao |
+| Precision | Trong các mẫu bị báo là malware, bao nhiêu thật sự là malware | Cao |
+| Recall | Trong malware thật, mô hình bắt được bao nhiêu | Cao |
+| F1 | Trung bình điều hòa giữa Precision và Recall | Cao |
+| Forget | Mức giảm hiệu năng trên task cũ sau khi học task mới | Thấp |
+| BWT | Ảnh hưởng của task mới lên task cũ | Cao, gần 0 hoặc dương |
+| FWT | Kiến thức task cũ giúp task mới trước khi học task mới | Cao |
+| EscRate | Tỷ lệ drift dẫn đến escalation | > 0 trong stress test |
+| RecRate | Tỷ lệ client escalation có thể recovery | Cao trong stress test |
 
-## 8. Vi sao 2:1 cho ket qua khac 1:1
+## 8. Vì Sao 2:1 Cho Kết Quả Khác 1:1
 
-### 1. Mo hinh thay nhieu malware hon
+### 1. Mô hình thấy nhiều malware hơn
 
-Voi 2:1, malware gap doi benign. Mo hinh hoc duoc nhieu pattern malware hon:
+Với 2:1, malware gấp đôi benign. Mô hình học được nhiều pattern malware hơn:
 
 ```text
 system call frequency
 binder call frequency
-hanh vi bat thuong cua tung ho malware
+hành vi bất thường của từng họ malware
 ```
 
-Vi vay Recall va F1 thuong tang.
+Vì vậy Recall và F1 thường tăng.
 
-### 2. Recall tang nhung Precision co the dao dong
+### 2. Recall tăng nhưng Precision có thể dao động
 
-Khi malware nhieu hon, mo hinh co xu huong du doan malware manh hon:
+Khi malware nhiều hơn, mô hình có xu hướng dự đoán malware mạnh hơn:
 
 ```text
-Tang Recall: bot bo sot malware
-Co the giam Precision nhe: co them benign bi bao nham la malware
+Recall tăng:
+  Ít bỏ sót malware hơn.
+
+Precision có thể giảm nhẹ:
+  Có thể có thêm benign bị báo nhầm là malware.
 ```
 
-Trong malware detection, Recall cao rat quan trong vi bo sot malware nguy hiem hon bao nham benign.
+Trong malware detection, Recall cao rất quan trọng vì bỏ sót malware nguy hiểm hơn báo nhầm benign.
 
-### 3. category_strict tao drift ro hon
+### 3. `category_strict` tạo drift rõ hơn
 
-Neu dung `category_strict`, moi task co mot domain malware ro:
+`category_strict` tạo chuỗi task:
 
 ```text
 Adware -> Banking -> SMS -> Riskware -> MixedHeldout
 ```
 
-Vi task thay doi ro rang, catastrophic forgetting de quan sat hon. Replay + EWC cua FL-CL-MalDrift co co hoi the hien tac dung.
+Do các task khác domain nhau rõ ràng, catastrophic forgetting dễ quan sát hơn. Replay + EWC của FL-CL-MalDrift có điều kiện thể hiện tác dụng.
 
-### 4. Vi sao FL-MalDrift doi khi gan FedAvg
+### 4. Vì sao FL-MalDrift đôi khi gần FedAvg
 
-FL-MalDrift chu yeu xu ly update drift bang filtering/down-weighting. Neu drift score khong qua cao hoac client van con duoc accept nhieu, ket qua co the gan FedAvg.
+FL-MalDrift chủ yếu xử lý drift bằng filtering/down-weighting. Nếu drift score không quá cao hoặc phần lớn client vẫn được accept, kết quả có thể gần FedAvg.
 
-FL-CL-MalDrift khac o cho co:
+FL-CL-MalDrift khác ở chỗ có thêm:
 
 ```text
-Replay Buffer: hoc lai mot phan mau cu
-EWC: giu cac trong so quan trong cua task cu
-DRC: chuyen stage khi drift keo dai
+Replay Buffer:
+  Học lại một phần mẫu cũ.
+
+EWC:
+  Giữ các trọng số quan trọng của task cũ.
+
+DRC:
+  Chuyển stage khi drift kéo dài.
 ```
 
-Nen no thuong tot hon ve Forget/BWT/FWT.
+Vì vậy FL-CL-MalDrift thường tốt hơn ở Forget, BWT và FWT.
 
-## 9. Dien giai ket qua 5-fold hien tai
+## 9. Diễn Giải Kết Quả 5-Fold Hiện Tại
 
-Bang 5-fold, 5 clients:
+Kết quả 5-fold, 5 clients:
 
 ```text
 FedAvg:
-  ACC    = 0.9033 +/- 0.0145
-  F1     = 0.9283 +/- 0.0116
-  Recall = 0.9471 +/- 0.0199
-  Forget = 0.0206 +/- 0.0069
-  BWT    = -0.0150 +/- 0.0108
-  FWT    = 0.2506 +/- 0.0256
+  ACC    = 0.9033 ± 0.0145
+  F1     = 0.9283 ± 0.0116
+  Recall = 0.9471 ± 0.0199
+  Forget = 0.0206 ± 0.0069
+  BWT    = -0.0150 ± 0.0108
+  FWT    = 0.2506 ± 0.0256
 
 FL-MalDrift:
-  ACC    = 0.9026 +/- 0.0149
-  F1     = 0.9279 +/- 0.0120
-  Recall = 0.9469 +/- 0.0203
-  Forget = 0.0226 +/- 0.0092
-  BWT    = -0.0169 +/- 0.0128
-  FWT    = 0.2524 +/- 0.0204
+  ACC    = 0.9026 ± 0.0149
+  F1     = 0.9279 ± 0.0120
+  Recall = 0.9469 ± 0.0203
+  Forget = 0.0226 ± 0.0092
+  BWT    = -0.0169 ± 0.0128
+  FWT    = 0.2524 ± 0.0204
 
 FL-CL-MalDrift:
-  ACC    = 0.9169 +/- 0.0112
-  F1     = 0.9394 +/- 0.0082
-  Recall = 0.9669 +/- 0.0112
-  Forget = 0.0071 +/- 0.0027
-  BWT    = 0.0033 +/- 0.0062
-  FWT    = 0.3151 +/- 0.0227
+  ACC    = 0.9169 ± 0.0112
+  F1     = 0.9394 ± 0.0082
+  Recall = 0.9669 ± 0.0112
+  Forget = 0.0071 ± 0.0027
+  BWT    = 0.0033 ± 0.0062
+  FWT    = 0.3151 ± 0.0227
 ```
 
-Ket luan:
+Kết luận:
 
 ```text
-FL-CL-MalDrift co kha nang phat hien tot hon.
-FL-CL-MalDrift giam forgetting ro ret.
-FL-CL-MalDrift co BWT duong, chung to hoc task moi khong lam suy giam task cu nhu FedAvg/FL-MalDrift.
-FL-CL-MalDrift co FWT cao nhat, chung to kien thuc cu chuyen giao sang task moi tot hon.
+FL-CL-MalDrift có khả năng phát hiện malware tốt hơn.
+FL-CL-MalDrift giảm forgetting rõ rệt.
+FL-CL-MalDrift có BWT dương, chứng tỏ học task mới không làm suy giảm task cũ như FedAvg/FL-MalDrift.
+FL-CL-MalDrift có FWT cao nhất, chứng tỏ kiến thức cũ chuyển giao sang task mới tốt hơn.
 ```
 

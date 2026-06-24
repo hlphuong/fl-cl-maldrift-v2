@@ -1,53 +1,55 @@
-# Huong dan chay FL-CL-MalDrift v2
+# Hướng Dẫn Chạy FL-CL-MalDrift v2
 
-File nay huong dan cach cai dat, chuan bi du lieu, chay so sanh 3 phuong phap, chay K-Fold, xuat bang ket qua, va vai tro cac file chinh trong project.
+Tài liệu này hướng dẫn cách cài đặt, chuẩn bị dữ liệu, chạy so sánh 3 phương pháp, chạy K-Fold, xuất bảng kết quả, và giải thích vai trò các file chính trong project.
 
-## 1. Cau truc thu muc
+## 1. Cấu Trúc Thư Mục
 
 ```text
 FL_CL_MalDrift_v2/
-|-- CSV/                                  # CSV raw tu CICMalDroid
-|-- FL_CL_MalDrift_Summary_1.docx         # file tom tat/yeu cau thiet ke
+|-- CSV/                                  # CSV gốc từ CICMalDroid
+|-- FL_CL_MalDrift_Summary_1.docx         # file tóm tắt/yêu cầu thiết kế
+|-- RUN_GUIDE.md                          # hướng dẫn chạy project
+|-- EXPERIMENT_EXPLANATION.md             # giải thích luồng thí nghiệm
 |-- fl_cl_maldrift_v2/
-|   |-- main.py                           # entry point chay training/testing
-|   |-- config.py                         # cau hinh hyperparameter tap trung
-|   |-- prepare_cicmaldroid.py            # tien xu ly CICMalDroid -> features.csv
-|   |-- requirements.txt                  # cac thu vien Python can cai
+|   |-- main.py                           # file chính để chạy training/testing
+|   |-- config.py                         # cấu hình hyperparameter tập trung
+|   |-- prepare_cicmaldroid.py            # tiền xử lý CICMalDroid
+|   |-- requirements.txt                  # danh sách thư viện Python
 |   |-- data/
 |   |   |-- dataset.py                    # load data, chia task, chia client
-|   |   |-- cicmaldroid/features.csv      # dataset da tien xu ly
+|   |   |-- cicmaldroid/features.csv      # dataset đã tiền xử lý
 |   |-- fl/
 |   |   |-- client.py                     # logic client FL + train local + DRC
 |   |   |-- server.py                     # FedAvg/drift-aware aggregation
-|   |-- models/mlp.py                     # mo hinh MalwareMLP
+|   |-- models/mlp.py                     # mô hình MalwareMLP
 |   |-- modules/
-|   |   |-- drift_detector.py             # HDDM-W/ADWIN/DDM/EDDM drift detector
+|   |   |-- drift_detector.py             # drift detector
 |   |   |-- drc.py                        # Drift Resolution Controller
 |   |   |-- continual_learning.py         # Replay Buffer + EWC
-|   |   |-- privacy.py                    # DP-SGD clipping/noise
+|   |   |-- privacy.py                    # DP-SGD
 |   |-- utils/
 |   |   |-- metrics.py                    # ACC/F1/Recall/Forget/BWT/FWT
-|   |   |-- logger.py                     # luu json/csv/plot
+|   |   |-- logger.py                     # lưu JSON/CSV/PNG
 |   |-- scripts/
-|   |   |-- export_kfold_task_table.py    # xuat bang CSV/PNG tong hop K-Fold
-|   |-- results/                          # ket qua thuc nghiem
+|   |   |-- export_kfold_task_table.py    # xuất bảng tổng hợp K-Fold
+|   |-- results/                          # kết quả thực nghiệm
 ```
 
-## 2. Cai dat moi truong
+## 2. Cài Đặt Môi Trường
 
-Tu thu muc goc:
+Di chuyển vào thư mục code:
 
 ```powershell
 cd C:\Users\phuong\Desktop\HKII\Malware\FL_CL_MalDrift_v2\fl_cl_maldrift_v2
 ```
 
-Neu da co moi truong `malenv`:
+Nếu đã có môi trường `malenv`, kiểm tra:
 
 ```powershell
 .\malenv\Scripts\python.exe --version
 ```
 
-Neu clone lai tu GitHub va chua co moi truong:
+Nếu clone lại từ GitHub và chưa có môi trường:
 
 ```powershell
 python -m venv malenv
@@ -55,103 +57,131 @@ python -m venv malenv
 .\malenv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
-## 3. Chuan bi dataset
+## 3. Chuẩn Bị Dataset CICMalDroid
 
-Script `prepare_cicmaldroid.py` doc CSV raw tu thu muc `..\CSV`, chon 200 feature tot nhat, encode label, va ghi ra:
+Script `prepare_cicmaldroid.py` đọc CSV gốc từ thư mục `..\CSV`, chọn top 200 feature bằng mutual information, encode label, rồi lưu ra:
 
 ```text
 fl_cl_maldrift_v2/data/cicmaldroid/features.csv
 ```
 
-### Tao dataset 1:1
+Tạo dataset malware:benign = 1:1:
 
 ```powershell
 .\malenv\Scripts\python.exe prepare_cicmaldroid.py --force --malware_ratio 1.0
 ```
 
-Ket qua du kien:
-
-```text
-Benign  = 1795
-Malware = 1795
-Total   = 3590
-```
-
-### Tao dataset 2:1
+Tạo dataset malware:benign = 2:1:
 
 ```powershell
 .\malenv\Scripts\python.exe prepare_cicmaldroid.py --force --malware_ratio 2.0
 ```
 
-Ket qua hien tai:
+Dataset 2:1 hiện tại có:
 
 ```text
-Benign  = 1795
-Malware = 3590
-Total   = 5385
-Class dist:
-  1 Adware   = 479
-  2 Banking  = 781
-  3 SMS      = 1405
-  4 Riskware = 925
-  5 Benign   = 1795
+Tổng mẫu: 5385
+Benign:  1795
+Malware: 3590
+
+Class 1 Adware:   479
+Class 2 Banking:  781
+Class 3 SMS:      1405
+Class 4 Riskware: 925
+Class 5 Benign:   1795
 ```
 
-## 4. Chay so sanh 3 phuong phap
+## 4. Chạy So Sánh 3 Phương Pháp
 
-3 phuong phap:
+Ba phương pháp được so sánh:
 
 ```text
-FedAvg:          Federated Learning thuong
-FL-MalDrift:     Drift-aware aggregation, khong Continual Learning
-FL-CL-MalDrift:  Drift-aware + DRC + Replay + EWC
+FedAvg:
+  Federated Learning cơ bản, không xử lý drift, không continual learning.
+
+FL-MalDrift:
+  Có drift-aware aggregation, nhưng không có Replay/EWC.
+
+FL-CL-MalDrift:
+  Có drift-aware aggregation, DRC, Replay Buffer và EWC.
 ```
 
-Lenh so sanh chinh voi 5 task, 5 client:
+Lệnh so sánh chính với 5 task, 5 client:
 
 ```powershell
 .\malenv\Scripts\python.exe main.py --compare --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_strict --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --out results\compare_5clients_strict_2to1
 ```
 
-Y nghia cac tham so quan trong:
+Ý nghĩa tham số:
 
 ```text
---compare                    chay ca 3 method
---dataset cicmaldroid        dung CICMalDroid da tien xu ly
---tasks 5                    chia du lieu thanh 5 task
---rounds 25                  moi task co 25 communication rounds
---clients 5                  dung 5 federated clients
+--compare
+  Chạy cả 3 phương pháp.
+
+--dataset cicmaldroid
+  Dùng dataset CICMalDroid đã tiền xử lý.
+
+--tasks 5
+  Chia dữ liệu thành 5 task liên tục.
+
+--rounds 25
+  Mỗi task chạy 25 communication rounds.
+
+--clients 5
+  Dùng 5 client trong federated learning.
+
 --task_strategy category_strict
-                             task 0..3 gan voi tung ho malware, task 4 mixed/held-out
+  Chia task theo từng họ mã độc rõ ràng để tạo concept drift mạnh.
+
 --partition_strategy category
-                             chia train data cho client theo non-IID category
---local_epochs 3             moi client train 3 epoch local moi round
---tau_init 0.25              nguong drift ban dau
---tau_min 0.2                san nguong drift
---warmup_rounds 0            bat dau loc drift ngay tu round dau
---ewc_lambda 0.1             do manh EWC
---replay_buffer 800          kich thuoc replay buffer
+  Chia train data cho client theo kiểu non-IID/category specialization.
+
+--local_epochs 3
+  Mỗi client train local 3 epoch trước khi gửi update lên server.
+
+--tau_init 0.25
+  Ngưỡng drift ban đầu của server.
+
+--tau_min 0.2
+  Ngưỡng drift thấp nhất.
+
+--warmup_rounds 0
+  Không dùng warmup, server xét drift ngay từ round đầu.
+
+--ewc_lambda 0.1
+  Độ mạnh của EWC.
+
+--replay_buffer 800
+  Kích thước replay buffer.
 ```
 
-## 5. Chay K-Fold 5 folds, 5 clients, 3 method
+## 5. Chạy K-Fold 5 Folds, 5 Clients, 3 Phương Pháp
 
-Day la lenh nen dung de lay bang ket qua on dinh nhat:
+Đây là lệnh nên dùng để lấy kết quả ổn định nhất:
 
 ```powershell
 .\malenv\Scripts\python.exe main.py --kfold 5 --compare --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_strict --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --out results\kfold5_clients5_compare
 ```
 
-Luong chay:
+Luồng chạy:
 
 ```text
-Fold 1 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4 -> 3 methods
-Fold 2 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4 -> 3 methods
-Fold 3 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4 -> 3 methods
-Fold 4 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4 -> 3 methods
-Fold 5 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4 -> 3 methods
+Fold 1 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4
+Fold 2 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4
+Fold 3 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4
+Fold 4 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4
+Fold 5 -> Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 4
 ```
 
-File ket qua quan trong:
+Trong mỗi fold, chương trình chạy đủ 3 phương pháp:
+
+```text
+FedAvg
+FL-MalDrift
+FL-CL-MalDrift
+```
+
+Các file kết quả chính:
 
 ```text
 results/kfold5_clients5_compare/kfold_per_fold.csv
@@ -159,62 +189,65 @@ results/kfold5_clients5_compare/kfold_per_task.csv
 results/kfold5_clients5_compare/kfold_summary.csv
 ```
 
-## 6. Xuat bang tong hop CSV/PNG
+## 6. Xuất Bảng Tổng Hợp CSV Và PNG
 
-Sau khi chay K-Fold, xuat bang tong hop theo format Scenario/Task/Method:
+Sau khi chạy K-Fold, xuất bảng tổng hợp theo format `Scenario / Task / Method`:
 
 ```powershell
 .\malenv\Scripts\python.exe scripts\export_kfold_task_table.py --result_dir results\kfold5_clients5_compare --out_prefix kfold_task_summary_table_full
 ```
 
-File xuat ra:
+File xuất ra:
 
 ```text
 results/kfold5_clients5_compare/kfold_task_summary_table_full.csv
 results/kfold5_clients5_compare/kfold_task_summary_table_full.png
 ```
 
-Trong bang:
+Bảng gồm:
 
 ```text
-Scenario = Fold 1..Fold 5 va Mean +/- Std
+Scenario = Fold 1..Fold 5 và Mean ± Std
 Task     = Task 0..Task 4, Overall
 Method   = FedAvg, FL-MalDrift, FL-CL-MalDrift
 Metric   = Acc, Prec, Rec, F1, Forget, BWT, FWT
 ```
 
-Luu y: `Forget`, `BWT`, `FWT` la metric cua ca chuoi continual learning, nen chi co o dong `Overall`, khong co rieng cho tung task.
+Lưu ý: `Forget`, `BWT`, `FWT` là metric của cả chuỗi continual learning, nên chỉ có ở dòng `Overall`.
 
-## 7. Chay DRC stress test
+## 7. Chạy DRC Stress Test
 
-Dung de kiem tra drift loop/escalation/recovery:
+Lệnh này dùng để kiểm tra cơ chế drift loop, escalation và recovery:
 
 ```powershell
 .\malenv\Scripts\python.exe main.py --method fl_cl_maldrift --dataset cicmaldroid --tasks 5 --rounds 25 --clients 5 --task_strategy category_strict --partition_strategy category --local_epochs 3 --tau_init 0.25 --tau_min 0.2 --warmup_rounds 0 --ewc_lambda 0.1 --replay_buffer 800 --drc_stress --out results\drc_stress_5clients_2to1
 ```
 
-Khi doc ket qua:
+Cách đọc:
 
 ```text
-EscRate > 0  -> co escalation that su xay ra
-RecRate > 0  -> client co the recovery va quay lai federation
+EscRate > 0
+  Có escalation xảy ra.
+
+RecRate > 0
+  Client có thể recovery và quay lại federation.
 ```
 
-## 8. Vai tro cac file chinh
+## 8. Vai Trò Các File Chính
 
-| File | Vai tro |
+| File | Vai trò |
 |---|---|
-| `main.py` | Parse CLI, tao config, chay task, chay compare, chay K-Fold, in summary. |
-| `config.py` | Noi tap trung hyperparameter: FL, DATA, DRIFT, DRC, CL, SERVER. |
-| `prepare_cicmaldroid.py` | Chuyen CSV raw thanh `features.csv`, ho tro `--malware_ratio`. |
-| `data/dataset.py` | Load dataset, chia task (`category`, `category_strict`, `category_revisit`), chia client (`dirichlet`, `category`). |
-| `models/mlp.py` | Dinh nghia MalwareMLP. |
-| `fl/client.py` | Client FL: nhan global model, train local, tinh drift score, goi DRC, tra update. |
-| `fl/server.py` | Server FL: FedAvg, drift-aware filtering, drift-aware weighting, cap nhat tau. |
-| `modules/drift_detector.py` | Drift detector sinh drift score trong [0,1]. |
+| `main.py` | Parse CLI, tạo config, chạy task, chạy compare, chạy K-Fold, in summary. |
+| `config.py` | Chứa hyperparameter: FL, DATA, DRIFT, DRC, CL, SERVER. |
+| `prepare_cicmaldroid.py` | Tiền xử lý CICMalDroid, hỗ trợ `--malware_ratio`. |
+| `data/dataset.py` | Load dataset, chia task, chia client non-IID. |
+| `models/mlp.py` | Định nghĩa mô hình MalwareMLP. |
+| `fl/client.py` | Client FL: train local, tính drift score, gọi DRC, trả update. |
+| `fl/server.py` | Server FL: FedAvg, drift-aware filtering, drift-aware weighting, cập nhật `tau`. |
+| `modules/drift_detector.py` | Tạo drift score trong khoảng `[0,1]`. |
 | `modules/drc.py` | Drift Resolution Controller: STABLE, REPLAY, EWC, ESCALATION, RECOVERY. |
-| `modules/continual_learning.py` | Replay Buffer va EWC. |
-| `utils/metrics.py` | Tinh ACC, Precision, Recall, F1, Forgetting, BWT, FWT. |
-| `utils/logger.py` | Luu JSON, CSV, PNG ket qua. |
-| `scripts/export_kfold_task_table.py` | Xuat bang tong hop K-Fold thanh CSV va PNG. |
+| `modules/continual_learning.py` | Replay Buffer và EWC. |
+| `utils/metrics.py` | Tính ACC, Precision, Recall, F1, Forgetting, BWT, FWT. |
+| `utils/logger.py` | Lưu JSON, CSV, PNG kết quả. |
+| `scripts/export_kfold_task_table.py` | Xuất bảng tổng hợp K-Fold thành CSV và PNG. |
 
