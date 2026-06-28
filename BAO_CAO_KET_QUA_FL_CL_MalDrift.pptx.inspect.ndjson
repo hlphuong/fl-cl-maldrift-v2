@@ -1,0 +1,239 @@
+{"kind":"deck","id":"pr/fg6b6g","name":"Deck"}
+{"kind":"layout","layoutId":"79e41f29-9cce-4ec2-b4ca-f75f81da408a","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"f8f8721a-bb3c-4802-8dca-5cd15f057ba9","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/2z045y","slide":1,"title":"CHỦ ĐỀ 5 - PHÁT HIỆN MÃ ĐỘC THÍCH ỨNG","textShapes":9}
+{"kind":"shape","id":"sh/0rqd4vmt","slide":1,"bbox":[1000,-140,330,330]}
+{"kind":"shape","id":"sh/b6xkf6dc","slide":1,"bbox":[1046,-94,210,210]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":1,"bbox":[-145,470,300,300]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":1,"text":"CHỦ ĐỀ 5 - PHÁT HIỆN MÃ ĐỘC THÍCH ỨNG","textPreview":"CHỦ ĐỀ 5 - PHÁT HIỆN MÃ ĐỘC THÍCH ỨNG","textChars":37,"textLines":1,"bbox":[70,64,730,34]}
+{"kind":"textbox","id":"sh/0je9cvix","slide":1,"text":"Báo cáo kết quả FL-CL-MalDrift","textPreview":"Báo cáo kết quả FL-CL-MalDrift","textChars":30,"textLines":1,"bbox":[70,150,870,160]}
+{"kind":"shape","id":"sh/byhgn29g","slide":1,"bbox":[70,337,720,5]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":1,"text":"Federated Continual Learning cho phát hiện mã độc Android thích nghi dưới concept drift","textPreview":"Federated Continual Learning cho phát hiện mã độc Android thích nghi dưới concept drift","textChars":87,"textLines":1,"bbox":[70,372,820,76]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":1,"bbox":[70,520,190,58]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":1,"text":"FedAvg","textPreview":"FedAvg","textChars":6,"textLines":1,"bbox":[86,535,158,30]}
+{"kind":"shape","id":"sh/itgfmlkj","slide":1,"bbox":[295,520,190,58]}
+{"kind":"textbox","id":"sh/7ed8bat4","slide":1,"text":"FL-MalDrift","textPreview":"FL-MalDrift","textChars":11,"textLines":1,"bbox":[311,535,158,30]}
+{"kind":"shape","id":"sh/0z61032l","slide":1,"bbox":[520,520,190,58]}
+{"kind":"textbox","id":"sh/pkzupwb2","slide":1,"text":"FL-CL-MalDrift","textPreview":"FL-CL-MalDrift","textChars":14,"textLines":1,"bbox":[536,535,158,30]}
+{"kind":"shape","id":"sh/ih4byhgn","slide":1,"bbox":[745,520,190,58]}
+{"kind":"textbox","id":"sh/72x4nap4","slide":1,"text":"K-Fold = 5","textPreview":"K-Fold = 5","textChars":10,"textLines":1,"bbox":[761,535,158,30]}
+{"kind":"textbox","id":"sh/0nuxc3yl","slide":1,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":1,"text":"1/14","textPreview":"1/14","textChars":4,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"notes","id":"nt/2z045y","slide":1,"text":""}
+{"kind":"slide","id":"sl/zrf8f4","slide":2,"title":"BÁO CÁO KẾT QUẢ","textShapes":17}
+{"kind":"textbox","id":"sh/a5gbq1or","slide":2,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":2,"text":"Từ hướng dự định đến kết quả thực nghiệm","textPreview":"Từ hướng dự định đến kết quả thực nghiệm","textChars":40,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/s72x4nap","slide":2,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/3ylc7u54","slide":2,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/adsji5sn","slide":2,"text":"2/14","textPreview":"2/14","textChars":4,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/h4byhgn2","slide":2,"bbox":[72,155,520,330]}
+{"kind":"textbox","id":"sh/sji5snel","slide":2,"text":"Hướng định làm ban đầu","textPreview":"Hướng định làm ban đầu","textChars":22,"textLines":1,"bbox":[94,173,476,32]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":2,"text":"- Dựa trên FL-MalDrift gốc để xử lý concept drift trong federated learning.\n- Bổ sung cơ chế chống quên khi mô hình học tuần tự qua nhiều task.\n- Thiết kế DRC để tránh client drift cao bị loại lặp lại.","textPreview":"- Dựa trên FL-MalDrift gốc để xử lý concept drift trong federated learning. | - Bổ sung cơ chế chống quên khi mô hình học tuần tự qua nhi...","textChars":201,"textLines":3,"bbox":[94,213,476,254]}
+{"kind":"shape","id":"sh/ap4r65wj","slide":2,"bbox":[688,155,520,330]}
+{"kind":"textbox","id":"sh/0je9cvix","slide":2,"text":"Kết quả đã hoàn thành","textPreview":"Kết quả đã hoàn thành","textChars":21,"textLines":1,"bbox":[710,173,476,32]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":2,"text":"- Code chạy được 3 phương pháp: FedAvg, FL-MalDrift, FL-CL-MalDrift.\n- Có chia dữ liệu theo 1:1, 2:1, K-Fold và category-dominant tasks.\n- Xuất được bảng so sánh ACC, Precision, F1, Recall, Forget, BWT, FWT.","textPreview":"- Code chạy được 3 phương pháp: FedAvg, FL-MalDrift, FL-CL-MalDrift. | - Có chia dữ liệu theo 1:1, 2:1, K-Fold và category-dominant tasks...","textChars":207,"textLines":3,"bbox":[710,213,476,254]}
+{"kind":"shape","id":"sh/idonyd0z","slide":2,"bbox":[170,500,300,138]}
+{"kind":"textbox","id":"sh/byhgn29g","slide":2,"text":"Kết quả chính","textPreview":"Kết quả chính","textChars":13,"textLines":1,"bbox":[188,514,264,24]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":2,"text":"FL-CL","textPreview":"FL-CL","textChars":5,"textLines":1,"bbox":[188,546,264,44]}
+{"kind":"textbox","id":"sh/tcj6tova","slide":2,"text":"cao hơn ACC, F1, Recall; Forget thấp hơn","textPreview":"cao hơn ACC, F1, Recall; Forget thấp hơn","textChars":40,"textLines":1,"bbox":[188,596,264,34]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":2,"bbox":[490,500,300,138]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":2,"text":"Thực nghiệm","textPreview":"Thực nghiệm","textChars":11,"textLines":1,"bbox":[508,514,264,24]}
+{"kind":"textbox","id":"sh/032lszqt","slide":2,"text":"5 Fold","textPreview":"5 Fold","textChars":6,"textLines":1,"bbox":[508,546,264,44]}
+{"kind":"textbox","id":"sh/tovahoza","slide":2,"text":"mỗi fold là một lần chạy độc lập","textPreview":"mỗi fold là một lần chạy độc lập","textChars":32,"textLines":1,"bbox":[508,596,264,34]}
+{"kind":"shape","id":"sh/tgfmlkjm","slide":2,"bbox":[810,500,300,138]}
+{"kind":"textbox","id":"sh/4vmtwra5","slide":2,"text":"Task drift","textPreview":"Task drift","textChars":10,"textLines":1,"bbox":[828,514,264,24]}
+{"kind":"textbox","id":"sh/bat47y1k","slide":2,"text":"0.90","textPreview":"0.90","textChars":4,"textLines":1,"bbox":[828,546,264,44]}
+{"kind":"textbox","id":"sh/mp0bi9s3","slide":2,"text":"một họ malware chiếm đa số trong mỗi task","textPreview":"một họ malware chiếm đa số trong mỗi task","textChars":41,"textLines":1,"bbox":[828,596,264,34]}
+{"kind":"notes","id":"nt/zrf8f4","slide":2,"text":""}
+{"kind":"slide","id":"sl/yeq28e","slide":3,"title":"BÁO CÁO KẾT QUẢ","textShapes":7}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":3,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/judg7ads","slide":3,"text":"Bài toán và bộ dữ liệu sử dụng","textPreview":"Bài toán và bộ dữ liệu sử dụng","textChars":30,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/u9knih4b","slide":3,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":3,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":3,"text":"3/14","textPreview":"3/14","textChars":4,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":3,"text":"- Dataset: CICMalDroid 2020.\n- 5 nhóm gốc: Adware, Banking, SMS, Riskware, Benign.\n- Bài toán trong code: binary malware detection.\n- Class 1-4 được gộp thành Malware, class 5 là Benign.\n- Feature: numeric features, xử lý NaN/Inf, bỏ cột constant, chọn top 200 bằng mutual information.","textPreview":"- Dataset: CICMalDroid 2020. | - 5 nhóm gốc: Adware, Banking, SMS, Riskware, Benign. | - Bài toán trong code: binary malware detection. |...","textChars":285,"textLines":5,"bbox":[78,150,520,300]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":3,"bbox":[78,485,1092,120]}
+{"kind":"textbox","id":"sh/cvixczed","slide":3,"text":"Hai tỷ lệ dữ liệu đã chạy","textPreview":"Hai tỷ lệ dữ liệu đã chạy","textChars":25,"textLines":1,"bbox":[100,503,1048,32]}
+{"kind":"textbox","id":"sh/m1cfa9w3","slide":3,"text":"1:1 = 1795 malware + 1795 benign\n2:1 = 3590 malware + 1795 benign\n\nTỷ lệ 2:1 giúp mô hình nhìn thấy nhiều malware hơn, thường tăng Recall/F1.","textPreview":"1:1 = 1795 malware + 1795 benign | 2:1 = 3590 malware + 1795 benign |  | Tỷ lệ 2:1 giúp mô hình nhìn thấy nhiều malware hơn, thường tăng ...","textChars":141,"textLines":4,"bbox":[100,543,1048,44]}
+{"kind":"table","id":"tb/za1gvy90","slide":3,"name":"","rows":6,"cols":3,"preview":"Nhóm | Vai trò | Số mẫu 2:1","bbox":[650,150,520,300]}
+{"kind":"notes","id":"nt/yeq28e","slide":3,"text":""}
+{"kind":"slide","id":"sl/5ov5v8","slide":4,"title":"BÁO CÁO KẾT QUẢ","textShapes":16}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":4,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":4,"text":"Cách chia dữ liệu: fold, task và client","textPreview":"Cách chia dữ liệu: fold, task và client","textChars":39,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/xs72x4na","slide":4,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":4,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/je9cvixc","slide":4,"text":"4/14","textPreview":"4/14","textChars":4,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/8z25kb6x","slide":4,"bbox":[80,165,230,118]}
+{"kind":"textbox","id":"sh/1gvy90je","slide":4,"text":"Dataset","textPreview":"Dataset","textChars":7,"textLines":1,"bbox":[98,181,194,30]}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":4,"text":"CICMalDroid\n1:1 hoặc 2:1","textPreview":"CICMalDroid | 1:1 hoặc 2:1","textChars":24,"textLines":2,"bbox":[98,219,194,52]}
+{"kind":"shape","id":"sh/fa9w3m94","slide":4,"bbox":[322,203,42,42]}
+{"kind":"shape","id":"sh/je9cvixc","slide":4,"bbox":[375,165,230,118]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":4,"text":"K-Fold","textPreview":"K-Fold","textChars":6,"textLines":1,"bbox":[393,181,194,30]}
+{"kind":"textbox","id":"sh/1gvy90je","slide":4,"text":"K = 5\nmỗi fold độc lập","textPreview":"K = 5 | mỗi fold độc lập","textChars":22,"textLines":2,"bbox":[393,219,194,52]}
+{"kind":"shape","id":"sh/8z25kb6x","slide":4,"bbox":[617,203,42,42]}
+{"kind":"shape","id":"sh/fmlkjm1c","slide":4,"bbox":[670,165,230,118]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":4,"text":"Tasks","textPreview":"Tasks","textChars":5,"textLines":1,"bbox":[688,181,194,30]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":4,"text":"5 task tuần tự\nTask 0 -> 4","textPreview":"5 task tuần tự | Task 0 -> 4","textChars":26,"textLines":2,"bbox":[688,219,194,52]}
+{"kind":"shape","id":"sh/87ed8bat","slide":4,"bbox":[912,203,42,42]}
+{"kind":"shape","id":"sh/fyxobm58","slide":4,"bbox":[965,165,230,118]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":4,"text":"Clients","textPreview":"Clients","textChars":7,"textLines":1,"bbox":[983,181,194,30]}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":4,"text":"5 client\nNon-IID alpha","textPreview":"5 client | Non-IID alpha","textChars":22,"textLines":2,"bbox":[983,219,194,52]}
+{"kind":"shape","id":"sh/n29gr2p8","slide":4,"bbox":[90,340,500,225]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":4,"text":"Điểm chỉnh quan trọng sau khi trao đổi","textPreview":"Điểm chỉnh quan trọng sau khi trao đổi","textChars":38,"textLines":1,"bbox":[112,358,456,32]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":4,"text":"Mỗi task không chỉ chứa một họ mã độc. Tất cả các task đều có Adware, Banking, SMS, Riskware, nhưng một họ chiếm đa số để tạo drift có kiểm soát.\n\nVới dominant_ratio = 0.90, forgetting thể hiện rõ hơn nhưng vẫn giữ đa dạng malware.","textPreview":"Mỗi task không chỉ chứa một họ mã độc. Tất cả các task đều có Adware, Banking, SMS, Riskware, nhưng một họ chiếm đa số để tạo drift có ki...","textChars":231,"textLines":3,"bbox":[112,398,456,149]}
+{"kind":"shape","id":"sh/y90je9cv","slide":4,"bbox":[690,350,500,210]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":4,"text":"Ví dụ trực giác","textPreview":"Ví dụ trực giác","textChars":15,"textLines":1,"bbox":[712,368,456,32]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":4,"text":"Task 0 có đủ 4 họ malware nhưng Adware chiếm nhiều nhất.\nTask 1 vẫn có đủ 4 họ nhưng Banking chiếm nhiều nhất.\nTask 2 tương tự với SMS, Task 3 với Riskware, Task 4 là mixed/held-out.","textPreview":"Task 0 có đủ 4 họ malware nhưng Adware chiếm nhiều nhất. | Task 1 vẫn có đủ 4 họ nhưng Banking chiếm nhiều nhất. | Task 2 tương tự với SM...","textChars":182,"textLines":3,"bbox":[712,408,456,134]}
+{"kind":"notes","id":"nt/5ov5v8","slide":4,"text":""}
+{"kind":"slide","id":"sl/3ek3vc","slide":5,"title":"BÁO CÁO KẾT QUẢ","textShapes":5}
+{"kind":"textbox","id":"sh/twra5gbq","slide":5,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/m58z25kb","slide":5,"text":"Pipeline chương trình","textPreview":"Pipeline chương trình","textChars":21,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/bq1oryts","slide":5,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/4nap4r65","slide":5,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/t83itgfm","slide":5,"text":"5/14","textPreview":"5/14","textChars":4,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"textbox","id":"sh/mhk3q5o7","slide":5,"text":"Luồng chạy tổng quát: chuẩn bị dữ liệu -> huấn luyện liên kết theo task/round -> đánh giá và xuất kết quả.","textPreview":"Luồng chạy tổng quát: chuẩn bị dữ liệu -> huấn luyện liên kết theo task/round -> đánh giá và xuất kết quả.","textChars":106,"textLines":1,"bbox":[78,138,1080,38]}
+{"kind":"image","id":"im/qxs72x4n","slide":5,"name":"","geometry":"roundRect","alt":"Pipeline chương trình FL-CL-MalDrift","bbox":[95,190,1090,420]}
+{"kind":"notes","id":"nt/3ek3vc","slide":5,"text":""}
+{"kind":"slide","id":"sl/sz523e","slide":6,"title":"BÁO CÁO KẾT QUẢ","textShapes":6}
+{"kind":"textbox","id":"sh/obm58z25","slide":6,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":6,"text":"Ba phương pháp được so sánh","textPreview":"Ba phương pháp được so sánh","textChars":27,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/65wjudg7","slide":6,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":6,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":6,"text":"6/14","textPreview":"6/14","textChars":4,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/6xkf6dcb","slide":6,"bbox":[120,440,1040,120]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":6,"text":"Ý nghĩa khi trình bày","textPreview":"Ý nghĩa khi trình bày","textChars":21,"textLines":1,"bbox":[142,458,996,32]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":6,"text":"Nếu FL-CL-MalDrift tốt hơn FedAvg và FL-MalDrift, điểm mới không chỉ nằm ở aggregation mà còn nằm ở continual learning: replay giữ dữ liệu cũ, EWC giữ trọng số quan trọng, DRC điều khiển phản ứng với drift.","textPreview":"Nếu FL-CL-MalDrift tốt hơn FedAvg và FL-MalDrift, điểm mới không chỉ nằm ở aggregation mà còn nằm ở continual learning: replay giữ dữ liệ...","textChars":206,"textLines":1,"bbox":[142,498,996,44]}
+{"kind":"table","id":"tb/a1gvy90j","slide":6,"name":"","rows":4,"cols":3,"preview":"Phương pháp | Thành phần chính | Vai trò trong so sánh","bbox":[76,155,1128,220]}
+{"kind":"notes","id":"nt/sz523e","slide":6,"text":""}
+{"kind":"slide","id":"sl/dz2rhd","slide":7,"title":"BÁO CÁO KẾT QUẢ","textShapes":13}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":7,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":7,"text":"FL-CL-MalDrift đã cải tiến gì?","textPreview":"FL-CL-MalDrift đã cải tiến gì?","textChars":30,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":7,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":7,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/0je9cvix","slide":7,"text":"7/14","textPreview":"7/14","textChars":4,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/byhgn29g","slide":7,"bbox":[80,155,500,148]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":7,"text":"DRC","textPreview":"DRC","textChars":3,"textLines":1,"bbox":[102,173,456,32]}
+{"kind":"textbox","id":"sh/p0bi9s36","slide":7,"text":"Stable -> Replay -> EWC -> Escalation -> Recovery\nĐiều khiển phản ứng theo mức drift.","textPreview":"Stable -> Replay -> EWC -> Escalation -> Recovery | Điều khiển phản ứng theo mức drift.","textChars":85,"textLines":2,"bbox":[102,213,456,72]}
+{"kind":"shape","id":"sh/0fepkzup","slide":7,"bbox":[660,155,500,148]}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":7,"text":"Replay Buffer","textPreview":"Replay Buffer","textChars":13,"textLines":1,"bbox":[682,173,456,32]}
+{"kind":"textbox","id":"sh/7ed8bat4","slide":7,"text":"Lưu mẫu cũ bằng reservoir sampling.\nGiảm quên khi học task mới.","textPreview":"Lưu mẫu cũ bằng reservoir sampling. | Giảm quên khi học task mới.","textChars":63,"textLines":2,"bbox":[682,213,456,72]}
+{"kind":"shape","id":"sh/0z61032l","slide":7,"bbox":[80,345,500,148]}
+{"kind":"textbox","id":"sh/pkzupwb2","slide":7,"text":"EWC","textPreview":"EWC","textChars":3,"textLines":1,"bbox":[102,363,456,32]}
+{"kind":"textbox","id":"sh/ih4byhgn","slide":7,"text":"Phạt thay đổi trọng số quan trọng.\nBảo vệ tri thức của task trước.","textPreview":"Phạt thay đổi trọng số quan trọng. | Bảo vệ tri thức của task trước.","textChars":66,"textLines":2,"bbox":[102,403,456,72]}
+{"kind":"shape","id":"sh/72x4nap4","slide":7,"bbox":[660,345,500,148]}
+{"kind":"textbox","id":"sh/0nuxc3yl","slide":7,"text":"Recovery Monitor","textPreview":"Recovery Monitor","textChars":16,"textLines":1,"bbox":[682,363,456,32]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":7,"text":"Theo dõi EMA drift score.\nCho client quay lại nếu ổn định.","textPreview":"Theo dõi EMA drift score. | Cho client quay lại nếu ổn định.","textChars":58,"textLines":2,"bbox":[682,403,456,72]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":7,"text":"Kết hợp các phần này giúp FL-CL-MalDrift tập trung vào hai mục tiêu: thích nghi với malware mới và không quên malware cũ.","textPreview":"Kết hợp các phần này giúp FL-CL-MalDrift tập trung vào hai mục tiêu: thích nghi với malware mới và không quên malware cũ.","textChars":121,"textLines":1,"bbox":[112,570,1050,40]}
+{"kind":"notes","id":"nt/dz2rhd","slide":7,"text":""}
+{"kind":"slide","id":"sl/3mbmhb","slide":8,"title":"BÁO CÁO KẾT QUẢ","textShapes":8}
+{"kind":"textbox","id":"sh/nyd0z610","slide":8,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":8,"text":"Ngưỡng drift và tham số chính","textPreview":"Ngưỡng drift và tham số chính","textChars":29,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/54zidony","slide":8,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":8,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":8,"text":"8/14","textPreview":"8/14","textChars":4,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/cvixczed","slide":8,"bbox":[78,150,540,260]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":8,"text":"Ngưỡng drift tau","textPreview":"Ngưỡng drift tau","textChars":16,"textLines":1,"bbox":[100,168,496,32]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":8,"text":"Trong code hiện tại, tau là ngưỡng lai:\n\n- tau_init và tau_min được đặt từ lệnh chạy.\n- Sau đó tau được cập nhật theo thống kê drift score, có làm mượt bằng EWMA.\n\nVì vậy tau không hoàn toàn cố định, nhưng cũng không học tự do như tham số model.","textPreview":"Trong code hiện tại, tau là ngưỡng lai: |  | - tau_init và tau_min được đặt từ lệnh chạy. | - Sau đó tau được cập nhật theo thống kê drif...","textChars":245,"textLines":6,"bbox":[100,208,496,184]}
+{"kind":"shape","id":"sh/b6xkf6dc","slide":8,"bbox":[150,440,980,155]}
+{"kind":"textbox","id":"sh/il0rqd4v","slide":8,"text":"Công thức cần nhớ khi bị hỏi","textPreview":"Công thức cần nhớ khi bị hỏi","textChars":28,"textLines":1,"bbox":[172,458,936,32]}
+{"kind":"textbox","id":"sh/tcj6tova","slide":8,"text":"Forgetting: mức giảm tốt nhất trước đó so với kết quả sau cùng trên task cũ.\nBWT: ảnh hưởng của học task mới lên task cũ, càng gần 0 hoặc dương càng tốt.\nFWT: khả năng tận dụng tri thức trước để học task mới.","textPreview":"Forgetting: mức giảm tốt nhất trước đó so với kết quả sau cùng trên task cũ. | BWT: ảnh hưởng của học task mới lên task cũ, càng gần 0 ho...","textChars":208,"textLines":3,"bbox":[172,498,936,79]}
+{"kind":"table","id":"tb/65wjudg7","slide":8,"name":"","rows":6,"cols":3,"preview":"Tham số | Giá trị | Ý nghĩa","bbox":[680,150,500,260]}
+{"kind":"notes","id":"nt/3mbmhb","slide":8,"text":""}
+{"kind":"slide","id":"sl/vfafwx","slide":9,"title":"BÁO CÁO KẾT QUẢ","textShapes":6}
+{"kind":"textbox","id":"sh/u9knih4b","slide":9,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/1032lszq","slide":9,"text":"Kết quả single-run: 1:1 và 2:1","textPreview":"Kết quả single-run: 1:1 và 2:1","textChars":30,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/cfa9w3m9","slide":9,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":9,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":9,"text":"9/14","textPreview":"9/14","textChars":4,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/c7u54zid","slide":9,"bbox":[105,475,1070,110]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":9,"text":"Thông điệp chính","textPreview":"Thông điệp chính","textChars":16,"textLines":1,"bbox":[127,493,1026,32]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":9,"text":"Khi tăng tỷ lệ malware:benign từ 1:1 lên 2:1, model được học nhiều mẫu malware hơn nên Recall/F1 tăng. Tuy nhiên Precision có thể không tăng mạnh vì mô hình nhạy hơn với malware, dẫn đến một số benign bị dự đoán nhầm là malware.","textPreview":"Khi tăng tỷ lệ malware:benign từ 1:1 lên 2:1, model được học nhiều mẫu malware hơn nên Recall/F1 tăng. Tuy nhiên Precision có thể không t...","textChars":228,"textLines":1,"bbox":[127,533,1026,34]}
+{"kind":"table","id":"tb/g7adsji5","slide":9,"name":"","rows":5,"cols":7,"preview":"Tỷ lệ | Phương pháp | ACC | F1 | Recall | Forget | Nhận xét","bbox":[60,150,1160,280]}
+{"kind":"notes","id":"nt/vfafwx","slide":9,"text":""}
+{"kind":"slide","id":"sl/n6c455","slide":10,"title":"BÁO CÁO KẾT QUẢ","textShapes":14}
+{"kind":"textbox","id":"sh/94fu18jq","slide":10,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":10,"text":"Kết quả chính: K-Fold, 5 client, 5 task","textPreview":"Kết quả chính: K-Fold, 5 client, 5 task","textChars":39,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/r2p8nqxs","slide":10,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/gvy90je9","slide":10,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/9gr2p8nq","slide":10,"text":"10/14","textPreview":"10/14","textChars":5,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"textbox","id":"sh/2p8nqxs7","slide":10,"text":"Thiết lập chính: dataset 2:1, K-Fold = 5, clients = 5, tasks = 5, category_dominant, dominant_ratio = 0.90.","textPreview":"Thiết lập chính: dataset 2:1, K-Fold = 5, clients = 5, tasks = 5, category_dominant, dominant_ratio = 0.90.","textChars":107,"textLines":1,"bbox":[74,136,1110,34]}
+{"kind":"shape","id":"sh/kzupwb2h","slide":10,"bbox":[150,480,280,138]}
+{"kind":"textbox","id":"sh/9knih4by","slide":10,"text":"ACC tăng","textPreview":"ACC tăng","textChars":8,"textLines":1,"bbox":[168,494,244,24]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":10,"text":"+0.0287","textPreview":"+0.0287","textChars":7,"textLines":1,"bbox":[168,526,244,44]}
+{"kind":"textbox","id":"sh/0nuxc3yl","slide":10,"text":"so với FedAvg","textPreview":"so với FedAvg","textChars":13,"textLines":1,"bbox":[168,576,244,34]}
+{"kind":"shape","id":"sh/72x4nap4","slide":10,"bbox":[500,480,280,138]}
+{"kind":"textbox","id":"sh/ih4byhgn","slide":10,"text":"F1 tăng","textPreview":"F1 tăng","textChars":7,"textLines":1,"bbox":[518,494,244,24]}
+{"kind":"textbox","id":"sh/pkzupwb2","slide":10,"text":"+0.0250","textPreview":"+0.0250","textChars":7,"textLines":1,"bbox":[518,526,244,44]}
+{"kind":"textbox","id":"sh/0z61032l","slide":10,"text":"so với FedAvg","textPreview":"so với FedAvg","textChars":13,"textLines":1,"bbox":[518,576,244,34]}
+{"kind":"shape","id":"sh/7ed8bat4","slide":10,"bbox":[850,480,280,138]}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":10,"text":"Recall tăng","textPreview":"Recall tăng","textChars":11,"textLines":1,"bbox":[868,494,244,24]}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":10,"text":"+0.0472","textPreview":"+0.0472","textChars":7,"textLines":1,"bbox":[868,526,244,44]}
+{"kind":"textbox","id":"sh/0bi9s36h","slide":10,"text":"so với FedAvg","textPreview":"so với FedAvg","textChars":13,"textLines":1,"bbox":[868,576,244,34]}
+{"kind":"table","id":"tb/qpg3ex0n","slide":10,"name":"","rows":4,"cols":8,"preview":"Method | ACC | Prec | F1 | Recall | Forget | BWT | FWT","bbox":[38,190,1204,250]}
+{"kind":"notes","id":"nt/n6c455","slide":10,"text":""}
+{"kind":"slide","id":"sl/veu104","slide":11,"title":"BÁO CÁO KẾT QUẢ","textShapes":6}
+{"kind":"textbox","id":"sh/zed8v6ps","slide":11,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":11,"text":"Chứng minh giảm catastrophic forgetting","textPreview":"Chứng minh giảm catastrophic forgetting","textChars":39,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/hk3q5o7q","slide":11,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/65wjudg7","slide":11,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":11,"text":"11/14","textPreview":"11/14","textChars":5,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/a9w3m94f","slide":11,"bbox":[120,500,1040,105]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":11,"text":"Kết luận phần forgetting","textPreview":"Kết luận phần forgetting","textChars":24,"textLines":1,"bbox":[142,518,996,32]}
+{"kind":"textbox","id":"sh/7y1kre1w","slide":11,"text":"FL-CL-MalDrift giảm Forget từ 0.0407 xuống 0.0108, tức giảm khoảng 73.5% so với FedAvg. BWT của FL-CL gần 0 hơn, nghĩa là học task mới ít làm giảm hiệu năng trên task cũ hơn.","textPreview":"FL-CL-MalDrift giảm Forget từ 0.0407 xuống 0.0108, tức giảm khoảng 73.5% so với FedAvg. BWT của FL-CL gần 0 hơn, nghĩa là học task mới ít...","textChars":174,"textLines":1,"bbox":[142,558,996,29]}
+{"kind":"chart","id":"ch/s36hcrmh","slide":11,"name":"","chartType":"bar","title":"Forgetting càng thấp càng tốt","bbox":[80,155,520,300]}
+{"kind":"chart","id":"ch/hoza1gvy","slide":11,"name":"","chartType":"bar","title":"BWT càng gần 0 hoặc dương càng tốt","bbox":[680,155,520,300]}
+{"kind":"notes","id":"nt/veu104","slide":11,"text":""}
+{"kind":"slide","id":"sl/2tjmjs","slide":12,"title":"BÁO CÁO KẾT QUẢ","textShapes":13}
+{"kind":"textbox","id":"sh/ixczed8v","slide":12,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/tovahoza","slide":12,"text":"Vì sao FedAvg và FL-MalDrift gần nhau?","textPreview":"Vì sao FedAvg và FL-MalDrift gần nhau?","textChars":38,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/032lszqt","slide":12,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/bulwval8","slide":12,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/i9s36hcr","slide":12,"text":"12/14","textPreview":"12/14","textChars":5,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":12,"bbox":[78,150,520,135]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":12,"text":"1. FL-MalDrift chủ yếu đổi aggregation","textPreview":"1. FL-MalDrift chủ yếu đổi aggregation","textChars":38,"textLines":1,"bbox":[100,168,476,32]}
+{"kind":"textbox","id":"sh/byhgn29g","slide":12,"text":"FL-MalDrift lọc hoặc giảm trọng số client drift cao, nhưng chưa có Replay/EWC để giữ tri thức task cũ.","textPreview":"FL-MalDrift lọc hoặc giảm trọng số client drift cao, nhưng chưa có Replay/EWC để giữ tri thức task cũ.","textChars":102,"textLines":1,"bbox":[100,208,476,59]}
+{"kind":"shape","id":"sh/idonyd0z","slide":12,"bbox":[680,150,520,135]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":12,"text":"2. Drift score chưa đủ tách biệt","textPreview":"2. Drift score chưa đủ tách biệt","textChars":32,"textLines":1,"bbox":[702,168,476,32]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":12,"text":"Khi drift giữa client không quá mạnh, trọng số sau drift-aware weighting gần giống FedAvg.","textPreview":"Khi drift giữa client không quá mạnh, trọng số sau drift-aware weighting gần giống FedAvg.","textChars":90,"textLines":1,"bbox":[702,208,476,59]}
+{"kind":"shape","id":"sh/u18jqh0f","slide":12,"bbox":[78,325,520,135]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":12,"text":"3. min_participation giữ nhiều client","textPreview":"3. min_participation giữ nhiều client","textChars":37,"textLines":1,"bbox":[100,343,476,32]}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":12,"text":"Để tránh quá ít client tham gia, code vẫn giữ một lượng client tối thiểu, nên kết quả aggregation không khác quá xa.","textPreview":"Để tránh quá ít client tham gia, code vẫn giữ một lượng client tối thiểu, nên kết quả aggregation không khác quá xa.","textChars":116,"textLines":1,"bbox":[100,383,476,59]}
+{"kind":"shape","id":"sh/1032lszq","slide":12,"bbox":[680,325,520,135]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":12,"text":"4. Down-weight có thể bỏ bớt tín hiệu hữu ích","textPreview":"4. Down-weight có thể bỏ bớt tín hiệu hữu ích","textChars":45,"textLines":1,"bbox":[702,343,476,32]}
+{"kind":"textbox","id":"sh/judg7ads","slide":12,"text":"Nếu client drift cao nhưng chứa mẫu malware mới có ích, giảm trọng số quá mạnh có thể làm FL-MalDrift thích nghi chậm.","textPreview":"Nếu client drift cao nhưng chứa mẫu malware mới có ích, giảm trọng số quá mạnh có thể làm FL-MalDrift thích nghi chậm.","textChars":118,"textLines":1,"bbox":[702,383,476,59]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":12,"text":"Vì vậy, lợi thế rõ nhất xuất hiện khi thêm continual learning: Replay + EWC + DRC.","textPreview":"Vì vậy, lợi thế rõ nhất xuất hiện khi thêm continual learning: Replay + EWC + DRC.","textChars":82,"textLines":1,"bbox":[130,540,1020,40]}
+{"kind":"notes","id":"nt/2tjmjs","slide":12,"text":""}
+{"kind":"slide","id":"sl/esqzsh","slide":13,"title":"BÁO CÁO KẾT QUẢ","textShapes":6}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":13,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":13,"text":"Ảnh hưởng của cách chia dữ liệu","textPreview":"Ảnh hưởng của cách chia dữ liệu","textChars":31,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/8v6psfil","slide":13,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/fyxobm58","slide":13,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":13,"text":"13/14","textPreview":"13/14","textChars":5,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":13,"bbox":[105,490,1070,110]}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":13,"text":"Nhận xét quan trọng","textPreview":"Nhận xét quan trọng","textChars":19,"textLines":1,"bbox":[127,508,1026,32]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":13,"text":"Kết quả không chỉ phụ thuộc thuật toán mà còn phụ thuộc cách tạo chuỗi task. Nếu task quá dễ hoặc quá giống nhau, forgetting khó thể hiện. Nếu task có một họ malware chiếm đa số nhưng vẫn giữ đủ các họ khác, thí nghiệm vừa hợp lý vừa làm rõ ưu điểm của FL-CL.","textPreview":"Kết quả không chỉ phụ thuộc thuật toán mà còn phụ thuộc cách tạo chuỗi task. Nếu task quá dễ hoặc quá giống nhau, forgetting khó thể hiện...","textChars":259,"textLines":1,"bbox":[127,548,1026,34]}
+{"kind":"table","id":"tb/oza1gvy9","slide":13,"name":"","rows":5,"cols":3,"preview":"Cách chia | Hiện tượng quan sát được | Ý nghĩa","bbox":[70,155,1140,285]}
+{"kind":"notes","id":"nt/esqzsh","slide":13,"text":""}
+{"kind":"slide","id":"sl/6agc40","slide":14,"title":"BÁO CÁO KẾT QUẢ","textShapes":16}
+{"kind":"textbox","id":"sh/re1w7mp0","slide":14,"text":"BÁO CÁO KẾT QUẢ","textPreview":"BÁO CÁO KẾT QUẢ","textChars":15,"textLines":1,"bbox":[64,30,360,24]}
+{"kind":"textbox","id":"sh/kzupwb2h","slide":14,"text":"Kết luận báo cáo trước thầy","textPreview":"Kết luận báo cáo trước thầy","textChars":27,"textLines":1,"bbox":[64,58,1020,48]}
+{"kind":"shape","id":"sh/9knih4by","slide":14,"bbox":[64,116,1152,4]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":14,"text":"FL-CL-MalDrift | CICMalDroid 2020","textPreview":"FL-CL-MalDrift | CICMalDroid 2020","textChars":33,"textLines":1,"bbox":[64,675,520,24]}
+{"kind":"textbox","id":"sh/rqd4vmtw","slide":14,"text":"14/14","textPreview":"14/14","textChars":5,"textLines":1,"bbox":[1125,675,90,24]}
+{"kind":"shape","id":"sh/kb6xkf6d","slide":14,"bbox":[88,155,340,150]}
+{"kind":"textbox","id":"sh/9w3m94fu","slide":14,"text":"Phát hiện malware","textPreview":"Phát hiện malware","textChars":17,"textLines":1,"bbox":[106,169,304,24]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":14,"text":"Tốt hơn","textPreview":"Tốt hơn","textChars":7,"textLines":1,"bbox":[106,201,304,44]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":14,"text":"ACC, F1, Recall cao nhất trong K-Fold chính.","textPreview":"ACC, F1, Recall cao nhất trong K-Fold chính.","textChars":44,"textLines":1,"bbox":[106,251,304,46]}
+{"kind":"shape","id":"sh/7ed8bat4","slide":14,"bbox":[470,155,340,150]}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":14,"text":"Chống quên","textPreview":"Chống quên","textChars":10,"textLines":1,"bbox":[488,169,304,24]}
+{"kind":"textbox","id":"sh/pkzupwb2","slide":14,"text":"Rõ hơn","textPreview":"Rõ hơn","textChars":6,"textLines":1,"bbox":[488,201,304,44]}
+{"kind":"textbox","id":"sh/0z61032l","slide":14,"text":"Forget giảm khoảng 73.5% so với FedAvg.","textPreview":"Forget giảm khoảng 73.5% so với FedAvg.","textChars":39,"textLines":1,"bbox":[488,251,304,46]}
+{"kind":"shape","id":"sh/72x4nap4","slide":14,"bbox":[852,155,340,150]}
+{"kind":"textbox","id":"sh/ih4byhgn","slide":14,"text":"Drift loop","textPreview":"Drift loop","textChars":10,"textLines":1,"bbox":[870,169,304,24]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":14,"text":"Có cơ chế","textPreview":"Có cơ chế","textChars":9,"textLines":1,"bbox":[870,201,304,44]}
+{"kind":"textbox","id":"sh/0nuxc3yl","slide":14,"text":"DRC + Recovery Monitor cho client hồi phục khi ổn định.","textPreview":"DRC + Recovery Monitor cho client hồi phục khi ổn định.","textChars":55,"textLines":1,"bbox":[870,251,304,46]}
+{"kind":"shape","id":"sh/7y1kre1w","slide":14,"bbox":[125,365,1030,140]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":14,"text":"Câu kết khi trình bày","textPreview":"Câu kết khi trình bày","textChars":21,"textLines":1,"bbox":[147,383,986,32]}
+{"kind":"textbox","id":"sh/mlkjm1cf","slide":14,"text":"Đề tài đã mở rộng FL-MalDrift từ một phương pháp drift-aware aggregation thành một pipeline federated continual learning. Kết quả thực nghiệm cho thấy FL-CL-MalDrift không chỉ cải thiện độ chính xác phát hiện malware mới mà còn giảm rõ catastrophic forgetting trên chuỗi task có drift.","textPreview":"Đề tài đã mở rộng FL-MalDrift từ một phương pháp drift-aware aggregation thành một pipeline federated continual learning. Kết quả thực ng...","textChars":285,"textLines":1,"bbox":[147,423,986,64]}
+{"kind":"textbox","id":"sh/f6dcbulw","slide":14,"text":"Xin cảm ơn thầy đã lắng nghe.","textPreview":"Xin cảm ơn thầy đã lắng nghe.","textChars":29,"textLines":1,"bbox":[195,560,890,50]}
+{"kind":"notes","id":"nt/6agc40","slide":14,"text":""}
